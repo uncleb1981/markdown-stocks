@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Down, Not Out</title>
+<title>The Reset</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%82%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <style>
   :root {
@@ -333,9 +333,9 @@
 <body>
 <div class="app">
   <header>
-    <h1>Down, Not Out</h1>
-    <div class="tagline">Fundamental stocks at a great value.</div>
-    <div class="tagline-sub">Swipe to build your watchlist.</div>
+    <h1>The Reset</h1>
+    <div class="tagline">The stock reset. The board didn't blink.</div>
+    <div class="tagline-sub">Swipe to back the ones that hold up.</div>
     <div class="sub" id="subLabel">Loading…</div>
     <div class="disclaimer">Informational only — not investment advice.</div>
   </header>
@@ -346,47 +346,47 @@
 
   <div class="controls">
     <button class="btn skip" id="skipBtn">✕ Pass</button>
-    <button class="btn save" id="saveBtn">♥ Watch</button>
+    <button class="btn save" id="saveBtn">✓ Back</button>
   </div>
 
   <div class="footer-row">
     <span id="countLabel">—</span>
-    <button id="watchlistBtn">Watchlist (<span id="savedCount">0</span>)</button>
+    <button id="watchlistBtn">Boardroom (<span id="savedCount">0</span>)</button>
   </div>
 </div>
 
 <section class="faq">
-  <h2>FAQ</h2>
+  <h2>Board Notes</h2>
   <div class="faq-item">
     <div class="q">What is this?</div>
-    <div class="a">A stock that just dropped isn't automatically a good value — most of the time it dropped for a reason. Down, Not Out looks for the smaller set that fell 10%+ in the past month but still hold up on the fundamentals: priced reasonably against their own growth rate (not just a low P/E), genuinely profitable, and not showing signs of financial distress. The goal is separating names that look like real value from names that are just falling. It's a personal research tool, not a stock-picking service.</div>
+    <div class="a">Picture the board meeting the week a stock drops. The market panicked; the board didn't — it went back to the actual numbers: growth, margins, debt, profitability. The Reset shows you only the companies where that internal check still comes back clean. A stock that just fell isn't a reset. A stock that fell and the fundamentals still hold — that is. It's a personal research tool, not a stock-picking service.</div>
   </div>
   <div class="faq-item">
-    <div class="q">How are the 7 picks chosen?</div>
-    <div class="a">Every name has to pass all of these: down 10%+ in the last month · P/E and forward P/E under 22 · PEG under 1 (priced well relative to its growth rate — the classic "undervalued" threshold, not just a low P/E) · net profit margin over 3% and return on equity over 5% (rules out financially fragile companies) · RSI under 45 (actually oversold, not just recently down) · trading volume under its own 30-day average (hasn't been widely noticed yet) · market cap over $300M · no banks or pharmaceutical companies. Whatever clears those filters gets ranked by market cap — the top 7 make the cut, though some days fewer than 7 names pass everything.</div>
+    <div class="q">What does the board actually check?</div>
+    <div class="a">Every name has to pass the board's own checklist: down 10%+ in the last month · P/E and forward P/E under 22 · PEG under 1 (priced well relative to its growth rate — the classic "undervalued" threshold, not just a low P/E) · net profit margin over 3% and return on equity over 5% (rules out financially fragile companies) · RSI under 45 (actually oversold, not just recently down) · trading volume under its own 30-day average (hasn't been widely noticed yet) · market cap over $300M · no banks or pharmaceutical companies. Whatever clears the checklist gets ranked by market cap — the top 7 make the boardroom, though some days fewer than 7 names pass everything.</div>
   </div>
   <div class="faq-item">
-    <div class="q">Where does the explanation under each stock come from?</div>
-    <div class="a">It's built from real reported earnings — beat or miss vs. estimates, and the report date — not a news search. A beat that still sold off is flagged as likely guidance-driven; a miss is called out directly. It won't catch a specific event (a downgrade, a lawsuit, a recall) unless that shows up in the earnings numbers themselves.</div>
+    <div class="q">Where does the board's read come from?</div>
+    <div class="a">It's built from real reported earnings — beat or miss vs. estimates, and the report date — not a news search. A beat that still sold off is flagged as likely guidance-driven; a miss is called out directly. The board's read won't catch a specific event (a downgrade, a lawsuit, a recall) unless that shows up in the earnings numbers themselves.</div>
   </div>
   <div class="faq-item">
     <div class="q">How long should I hold one of these?</div>
-    <div class="a">There's no set answer, and this app won't pretend to give you a specific number of weeks or months. Instead, each card shows two objective checkpoints: the stock's next earnings report (the next scheduled moment new information could confirm or break the thesis), and the RSI level that would need to clear 45 for the stock to stop counting as oversold in the first place. Once a pick no longer meets the same criteria that got it here, the original setup is gone — that's a more honest signal than a fixed holding period.</div>
+    <div class="a">The board doesn't set a hold date. It watches for the same signals that got a name into the boardroom in the first place — the next earnings report, and the RSI level clearing 45. Once a pick no longer resets against those same checks, the original case is gone. That's a more honest signal than a calendar reminder.</div>
   </div>
   <div class="faq-item">
     <div class="q">Is this investment advice?</div>
-    <div class="a">No. It's informational only, not a licensed recommendation, and it never places trades on its own.</div>
+    <div class="a">No. This is boardroom logic, not a licensed recommendation — informational only, and it never places trades on its own.</div>
   </div>
   <div class="faq-item">
     <div class="q">How often does it update?</div>
-    <div class="a">Weekdays at 8:10am, automatically, using live market data.</div>
+    <div class="a">Every weekday at 8:10am, when the board reconvenes.</div>
   </div>
 </section>
 
 <div class="sheet-backdrop" id="sheetBackdrop">
   <div class="sheet">
     <div class="sheet-header">
-      <h3>Watchlist</h3>
+      <h3>Boardroom</h3>
       <button class="clear-btn" id="clearBtn">Clear all</button>
     </div>
     <div id="savedList"></div>
@@ -418,8 +418,8 @@ function renderStack() {
 
   if (idx >= cards.length) {
     stack.innerHTML = `<div class="empty">
-      <h2>That's today's picks</h2>
-      <p>New ones tomorrow at 8:10am.</p>
+      <h2>That's the full board today.</h2>
+      <p>New session tomorrow at 8:10am.</p>
     </div>`;
     document.getElementById("countLabel").textContent = `${cards.length} of ${cards.length}`;
     return;
@@ -432,7 +432,7 @@ function renderStack() {
     el.style.zIndex = i;
     el.style.transform = `scale(${1 - (total - 1 - i) * 0.03}) translateY(${(total - 1 - i) * 10}px)`;
     el.innerHTML = `
-      <div class="stamp save">WATCH</div>
+      <div class="stamp save">BACK</div>
       <div class="stamp skip">PASS</div>
       <div class="ticker-line">
         <span class="ticker">${c.ticker}</span>
@@ -446,11 +446,11 @@ function renderStack() {
       ${c.nextEarnings || c.rsi != null ? `
       <div class="checkpoint">
         ${c.nextEarnings ? `<div class="checkpoint-row"><span class="label">Next earnings</span><span class="value">${c.nextEarnings}</span></div>` : ""}
-        ${c.rsi != null ? `<div class="checkpoint-row"><span class="label">Re-check when</span><span class="value">RSI clears 45 (now ${c.rsi})</span></div>` : ""}
+        ${c.rsi != null ? `<div class="checkpoint-row"><span class="label">Resets when</span><span class="value">RSI clears 45 (now ${c.rsi})</span></div>` : ""}
       </div>` : ""}
       <div class="swipe-hint">
         <span class="hint-skip">← Pass</span>
-        <span class="hint-save">Watch →</span>
+        <span class="hint-save">Back →</span>
       </div>
     `;
     stack.appendChild(el);
@@ -540,7 +540,7 @@ function renderWatchlistSheet() {
   const container = document.getElementById("savedList");
   container.innerHTML = list.length
     ? list.slice().reverse().map(s => `<div class="saved-item"><span class="t">${s.ticker}</span><span class="meta">${s.name} · ${s.savedOn} @ $${s.priceThen}</span></div>`).join("")
-    : `<p style="color:var(--muted); font-size:14.5px;">Nothing saved yet.</p>`;
+    : `<p style="color:var(--muted); font-size:14.5px;">Nothing backed yet.</p>`;
   const clearBtn = document.getElementById("clearBtn");
   clearBtn.disabled = list.length === 0;
 }
@@ -554,7 +554,7 @@ document.getElementById("sheetClose").addEventListener("click", () => {
 });
 document.getElementById("clearBtn").addEventListener("click", () => {
   if (loadSaved().length === 0) return;
-  if (confirm("Clear your entire watchlist? This can't be undone.")) {
+  if (confirm("Clear everyone from the boardroom? This can't be undone.")) {
     saveSaved([]);
     updateSavedCount();
     renderWatchlistSheet();

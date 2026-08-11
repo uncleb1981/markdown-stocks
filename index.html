@@ -80,14 +80,14 @@
     align-items: center;
     justify-content: center;
     padding: 16px 0;
-    height: 380px;
+    height: 480px;
     flex-shrink: 0;
   }
   .stack {
     position: relative;
     width: 100%;
     height: 100%;
-    max-height: 380px;
+    max-height: 480px;
   }
   .card {
     position: absolute;
@@ -140,15 +140,30 @@
     font-size: 16.5px;
     line-height: 1.55;
     color: #c9c9ce;
-    flex: 1;
   }
+
+  .checkpoint {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .checkpoint-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13.5px;
+  }
+  .checkpoint-row .label { color: var(--muted-2); font-weight: 600; }
+  .checkpoint-row .value { color: var(--muted); font-weight: 600; text-align: right; }
 
   .swipe-hint {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 14px;
-    margin-top: 12px;
+    margin-top: auto;
     border-top: 1px solid var(--border);
     font-size: 13.5px;
     font-weight: 700;
@@ -355,6 +370,10 @@
     <div class="a">It's built from real reported earnings — beat or miss vs. estimates, and the report date — not a news search. A beat that still sold off is flagged as likely guidance-driven; a miss is called out directly. It won't catch a specific event (a downgrade, a lawsuit, a recall) unless that shows up in the earnings numbers themselves.</div>
   </div>
   <div class="faq-item">
+    <div class="q">How long should I hold one of these?</div>
+    <div class="a">There's no set answer, and this app won't pretend to give you a specific number of weeks or months. Instead, each card shows two objective checkpoints: the stock's next earnings report (the next scheduled moment new information could confirm or break the thesis), and the RSI level that would need to clear 45 for the stock to stop counting as oversold in the first place. Once a pick no longer meets the same criteria that got it here, the original setup is gone — that's a more honest signal than a fixed holding period.</div>
+  </div>
+  <div class="faq-item">
     <div class="q">Is this investment advice?</div>
     <div class="a">No. It's informational only, not a licensed recommendation, and it never places trades on its own.</div>
   </div>
@@ -424,6 +443,11 @@ function renderStack() {
         <span class="down">${c.pct1mo.toFixed(1)}% past month</span><span class="sep">·</span><span class="pe">${c.pe}x P/E</span>
       </div>
       <div class="why">${c.why}</div>
+      ${c.nextEarnings || c.rsi != null ? `
+      <div class="checkpoint">
+        ${c.nextEarnings ? `<div class="checkpoint-row"><span class="label">Next earnings</span><span class="value">${c.nextEarnings}</span></div>` : ""}
+        ${c.rsi != null ? `<div class="checkpoint-row"><span class="label">Re-check when</span><span class="value">RSI clears 45 (now ${c.rsi})</span></div>` : ""}
+      </div>` : ""}
       <div class="swipe-hint">
         <span class="hint-skip">← Pass</span>
         <span class="hint-save">Watch →</span>

@@ -1,0 +1,63 @@
+{
+  "generatedDate": "2026-08-11",
+  "criteria": "Down 10%+ over 1 month, P/E and Forward P/E under 22, PEG under 2, net profit margin over 3%, return on equity over 5%, RSI under 45, relative volume under 1x 30-day average, market cap over $300M \u2014 top 7 by market cap",
+  "disclaimer": "Informational screener only, not investment advice. Data from live market feed. Not a recommendation to buy or sell any security.",
+  "cards": [
+    {
+      "ticker": "ITUB",
+      "name": "Itau Unibanco",
+      "price": 7.61,
+      "pe": 9.5,
+      "pct1mo": -10.0,
+      "why": "Brazil's largest private bank. Results were roughly in line on Aug 4, yet shares are down 10% \u2014 looks more like broader Brazilian market pressure than the print itself."
+    },
+    {
+      "ticker": "BBD",
+      "name": "Banco Bradesco",
+      "price": 3.24,
+      "pe": 7.7,
+      "pct1mo": -10.4,
+      "why": "One of Brazil's largest banks and insurers. Results were roughly in line on Aug 5, but shares are down 10% \u2014 again looks more sector/macro-driven than earnings-driven."
+    },
+    {
+      "ticker": "TTD",
+      "name": "Trade Desk",
+      "price": 13.67,
+      "pe": 15.9,
+      "pct1mo": -24.3,
+      "why": "Runs a programmatic ad-buying platform. Missed estimates by 8% on Aug 6, and shares are down 24% since \u2014 a direct reaction to the miss."
+    },
+    {
+      "ticker": "DAVE",
+      "name": "Dave",
+      "price": 306.27,
+      "pe": 19.9,
+      "pct1mo": -17.8,
+      "why": "Runs a digital banking app with cash-advance and budgeting tools. Beat estimates by 12% on Aug 5, yet shares dropped 18% \u2014 guidance likely weighed more than the print."
+    },
+    {
+      "ticker": "DRVN",
+      "name": "Driven Brands",
+      "price": 12.44,
+      "pe": 12.7,
+      "pct1mo": -12.9,
+      "why": "Provides auto services through brands like Take 5 Oil Change and Meineke. Beat estimates by 12% on Aug 6, yet shares fell 13% \u2014 another beat that guidance or sector jitters overshadowed."
+    },
+    {
+      "ticker": "BLBD",
+      "name": "Blue Bird",
+      "price": 65.67,
+      "pe": 7.7,
+      "pct1mo": -11.7,
+      "why": "Makes school buses, including electric models. Results were basically in line on Aug 5, but shares are down 12% \u2014 the move looks more sector- or guidance-driven than tied to the print."
+    },
+    {
+      "ticker": "PICS",
+      "name": "PicPay",
+      "price": 11.23,
+      "pe": 6.6,
+      "pct1mo": -14.9,
+      "why": "Runs digital banking and payments in Brazil. No earnings report in the past month \u2014 the last print (Jun 2) missed badly, and the next isn't until Aug 24. This slide looks like lingering fallout or sector pressure, not a fresh catalyst."
+    }
+  ]
+}

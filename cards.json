@@ -1,24 +1,8 @@
 {
   "generatedDate": "2026-08-11",
-  "criteria": "Down 10%+ over 1 month, P/E and Forward P/E under 22, PEG under 2, net profit margin over 3%, return on equity over 5%, RSI under 45, relative volume under 1x 30-day average, market cap over $300M \u2014 top 7 by market cap",
+  "criteria": "Down 10%+ over 1 month, P/E and Forward P/E under 22, PEG under 2, net profit margin over 3%, return on equity over 5%, RSI under 45, relative volume under 1x 30-day average, market cap over $300M, excludes banks and pharmaceutical companies \u2014 top 7 by market cap",
   "disclaimer": "Informational screener only, not investment advice. Data from live market feed. Not a recommendation to buy or sell any security.",
   "cards": [
-    {
-      "ticker": "ITUB",
-      "name": "Itau Unibanco",
-      "price": 7.61,
-      "pe": 9.5,
-      "pct1mo": -10.0,
-      "why": "Brazil's largest private bank. Results were roughly in line on Aug 4, yet shares are down 10% \u2014 looks more like broader Brazilian market pressure than the print itself."
-    },
-    {
-      "ticker": "BBD",
-      "name": "Banco Bradesco",
-      "price": 3.24,
-      "pe": 7.7,
-      "pct1mo": -10.4,
-      "why": "One of Brazil's largest banks and insurers. Results were roughly in line on Aug 5, but shares are down 10% \u2014 again looks more sector/macro-driven than earnings-driven."
-    },
     {
       "ticker": "TTD",
       "name": "Trade Desk",
@@ -26,14 +10,6 @@
       "pe": 15.9,
       "pct1mo": -24.3,
       "why": "Runs a programmatic ad-buying platform. Missed estimates by 8% on Aug 6, and shares are down 24% since \u2014 a direct reaction to the miss."
-    },
-    {
-      "ticker": "DAVE",
-      "name": "Dave",
-      "price": 306.27,
-      "pe": 19.9,
-      "pct1mo": -17.8,
-      "why": "Runs a digital banking app with cash-advance and budgeting tools. Beat estimates by 12% on Aug 5, yet shares dropped 18% \u2014 guidance likely weighed more than the print."
     },
     {
       "ticker": "DRVN",
@@ -52,12 +28,36 @@
       "why": "Makes school buses, including electric models. Results were basically in line on Aug 5, but shares are down 12% \u2014 the move looks more sector- or guidance-driven than tied to the print."
     },
     {
-      "ticker": "PICS",
-      "name": "PicPay",
-      "price": 11.23,
-      "pe": 6.6,
-      "pct1mo": -14.9,
-      "why": "Runs digital banking and payments in Brazil. No earnings report in the past month \u2014 the last print (Jun 2) missed badly, and the next isn't until Aug 24. This slide looks like lingering fallout or sector pressure, not a fresh catalyst."
+      "ticker": "NVGS",
+      "name": "Navigator Holdings",
+      "price": 19.98,
+      "pe": 9.4,
+      "pct1mo": -10.6,
+      "why": "Owns and operates liquefied gas carrier ships. Beat estimates by 55% on Aug 4, yet shares are still down 11% \u2014 a big beat the market largely ignored, likely on shipping-rate or macro concerns rather than the print."
+    },
+    {
+      "ticker": "NGVC",
+      "name": "Natural Grocers",
+      "price": 27.51,
+      "pe": 12.8,
+      "pct1mo": -14.2,
+      "why": "Runs Natural Grocers, a natural and organic grocery chain. Missed estimates by 8% on Aug 6, and shares are down 14% \u2014 a fairly direct reaction to the miss."
+    },
+    {
+      "ticker": "LMB",
+      "name": "Limbach",
+      "price": 46.5,
+      "pe": 18.4,
+      "pct1mo": -35.1,
+      "why": "A commercial HVAC, plumbing, and electrical contractor. Missed estimates by 32% on Aug 4 \u2014 one of the sharpest misses in this group \u2014 and shares are down 35% since, largely explained by that result."
+    },
+    {
+      "ticker": "CSV",
+      "name": "Carriage Services",
+      "price": 34.28,
+      "pe": 12.3,
+      "pct1mo": -14.8,
+      "why": "Runs funeral homes and cemeteries. Results were roughly in line on Aug 5, yet shares are still down 15% \u2014 looks more sector-driven than tied to the earnings print itself."
     }
   ]
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>buyadip.com</title>
+<title>Deep Value</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%82%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <style>
   :root {
@@ -47,24 +47,30 @@
     letter-spacing: -0.02em;
   }
   header .tagline {
-    color: var(--text);
-    font-size: 15.5px;
+    color: var(--muted);
+    font-size: 14.5px;
     font-weight: 500;
     line-height: 1.45;
     margin-top: 8px;
-    opacity: 0.88;
+  }
+  header .tagline-sub {
+    color: var(--muted);
+    font-size: 14.5px;
+    font-weight: 500;
+    line-height: 1.45;
+    margin-top: 4px;
   }
   header .sub {
     color: var(--muted);
-    font-size: 13.5px;
+    font-size: 14.5px;
     margin-top: 10px;
   }
   header .sub.stale {
     color: #e0a83e;
   }
   header .disclaimer {
-    color: var(--muted-2);
-    font-size: 11.5px;
+    color: var(--muted);
+    font-size: 14.5px;
     margin-top: 6px;
   }
 
@@ -154,19 +160,21 @@
 
   .stamp {
     position: absolute;
-    top: 22px;
-    font-size: 20px;
+    top: 50%;
+    left: 50%;
+    font-size: 28px;
     font-weight: 800;
-    letter-spacing: 0.05em;
-    padding: 6px 14px;
-    border: 2.5px solid;
-    border-radius: 8px;
+    letter-spacing: 0.06em;
+    padding: 10px 22px;
+    border: 3px solid;
+    border-radius: 10px;
     opacity: 0;
     text-transform: uppercase;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.55);
+    z-index: 5;
   }
-  .stamp.save { right: 20px; color: var(--green); border-color: var(--green); }
-  .stamp.skip { left: 20px; color: var(--red); border-color: var(--red); }
+  .stamp.save { color: var(--green); border-color: var(--green); transform: translate(-50%, -50%) rotate(-8deg); }
+  .stamp.skip { color: var(--red); border-color: var(--red); transform: translate(-50%, -50%) rotate(8deg); }
 
   .controls {
     display: flex;
@@ -294,8 +302,9 @@
 <body>
 <div class="app">
   <header>
-    <h1>buyadip.com</h1>
-    <div class="tagline">Stocks that fell 10%+ but still look cheap. Swipe to build your watchlist.</div>
+    <h1>Deep Value</h1>
+    <div class="tagline">Buying stocks at a value.</div>
+    <div class="tagline-sub">That pass a strict value screen.</div>
     <div class="sub" id="subLabel">Loading…</div>
     <div class="disclaimer">Informational only — not investment advice.</div>
   </header>
@@ -319,11 +328,11 @@
   <h2>FAQ</h2>
   <div class="faq-item">
     <div class="q">What is this?</div>
-    <div class="a">A small daily list of stocks that dropped 10%+ in the past month but still pass a basic value-and-quality screen. It's a personal research tool, not a stock-picking service.</div>
+    <div class="a">A stock that just dropped isn't automatically a good value — most of the time it dropped for a reason. Deep Value looks for the smaller set that fell 10%+ in the past month but still hold up on the fundamentals: priced reasonably against their own growth rate (not just a low P/E), genuinely profitable, and not showing signs of financial distress. The goal is separating names that look like real value from names that are just falling. It's a personal research tool, not a stock-picking service.</div>
   </div>
   <div class="faq-item">
     <div class="q">How are the 7 picks chosen?</div>
-    <div class="a">Every name has to pass all of these: down 10%+ in the last month · P/E and forward P/E under 22 · PEG under 2 (cheap relative to its growth rate, not just cheap) · net profit margin over 3% and return on equity over 5% (rules out financially fragile companies) · RSI under 45 (actually oversold, not just recently down) · trading volume under its own 30-day average (hasn't been widely noticed yet) · market cap over $300M · no banks or pharmaceutical companies. Whatever clears those filters gets ranked by market cap, and the top 7 make the cut.</div>
+    <div class="a">Every name has to pass all of these: down 10%+ in the last month · P/E and forward P/E under 22 · PEG under 1 (priced well relative to its growth rate — the classic "undervalued" threshold, not just a low P/E) · net profit margin over 3% and return on equity over 5% (rules out financially fragile companies) · RSI under 45 (actually oversold, not just recently down) · trading volume under its own 30-day average (hasn't been widely noticed yet) · market cap over $300M · no banks or pharmaceutical companies. Whatever clears those filters gets ranked by market cap — the top 7 make the cut, though some days fewer than 7 names pass everything.</div>
   </div>
   <div class="faq-item">
     <div class="q">Where does the explanation under each stock come from?</div>

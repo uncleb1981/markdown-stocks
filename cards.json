@@ -1,62 +1,54 @@
 {
   "generatedDate": "2026-08-11",
-  "criteria": "Down 10%+ over 1 month, P/E and Forward P/E under 22, PEG under 2, net profit margin over 3%, return on equity over 5%, RSI under 45, relative volume under 1x 30-day average, market cap over $300M, excludes banks and pharmaceutical companies \u2014 top 7 by market cap",
+  "criteria": "Down 10%+ over 1 month, P/E and Forward P/E under 22, PEG under 1, net profit margin over 3%, return on equity over 5%, RSI under 45, relative volume under 1x 30-day average, market cap over $300M, excludes banks and pharmaceutical companies \u2014 top 7 by market cap",
   "disclaimer": "Informational screener only, not investment advice. Data from live market feed. Not a recommendation to buy or sell any security.",
   "cards": [
     {
-      "ticker": "TTD",
-      "name": "Trade Desk",
-      "price": 13.67,
-      "pe": 15.9,
-      "pct1mo": -24.3,
-      "why": "Runs a programmatic ad-buying platform. Missed estimates by 8% on Aug 6, and shares are down 24% since \u2014 a direct reaction to the miss."
-    },
-    {
       "ticker": "DRVN",
       "name": "Driven Brands",
-      "price": 12.44,
+      "price": 12.38,
       "pe": 12.7,
-      "pct1mo": -12.9,
+      "pct1mo": -13.2,
       "why": "Provides auto services through brands like Take 5 Oil Change and Meineke. Beat estimates by 12% on Aug 6, yet shares fell 13% \u2014 another beat that guidance or sector jitters overshadowed."
     },
     {
       "ticker": "BLBD",
       "name": "Blue Bird",
-      "price": 65.67,
+      "price": 66.12,
       "pe": 7.7,
-      "pct1mo": -11.7,
-      "why": "Makes school buses, including electric models. Results were basically in line on Aug 5, but shares are down 12% \u2014 the move looks more sector- or guidance-driven than tied to the print."
+      "pct1mo": -11.1,
+      "why": "Makes school buses, including electric models. Results were basically in line on Aug 5, but shares are down 11% \u2014 the move looks more sector- or guidance-driven than tied to the print."
     },
     {
       "ticker": "NVGS",
       "name": "Navigator Holdings",
-      "price": 19.98,
+      "price": 20.02,
       "pe": 9.4,
-      "pct1mo": -10.6,
-      "why": "Owns and operates liquefied gas carrier ships. Beat estimates by 55% on Aug 4, yet shares are still down 11% \u2014 a big beat the market largely ignored, likely on shipping-rate or macro concerns rather than the print."
+      "pct1mo": -10.4,
+      "why": "Owns and operates liquefied gas carrier ships. Beat estimates by 55% on Aug 4, yet shares are still down 10% \u2014 a big beat the market largely ignored, likely on shipping-rate or macro concerns rather than the print."
     },
     {
       "ticker": "NGVC",
       "name": "Natural Grocers",
-      "price": 27.51,
+      "price": 27.25,
       "pe": 12.8,
-      "pct1mo": -14.2,
-      "why": "Runs Natural Grocers, a natural and organic grocery chain. Missed estimates by 8% on Aug 6, and shares are down 14% \u2014 a fairly direct reaction to the miss."
+      "pct1mo": -15.0,
+      "why": "Runs Natural Grocers, a natural and organic grocery chain. Missed estimates by 8% on Aug 6, and shares are down 15% \u2014 a fairly direct reaction to the miss."
     },
     {
       "ticker": "LMB",
       "name": "Limbach",
-      "price": 46.5,
+      "price": 46.35,
       "pe": 18.4,
-      "pct1mo": -35.1,
+      "pct1mo": -35.4,
       "why": "A commercial HVAC, plumbing, and electrical contractor. Missed estimates by 32% on Aug 4 \u2014 one of the sharpest misses in this group \u2014 and shares are down 35% since, largely explained by that result."
     },
     {
       "ticker": "CSV",
       "name": "Carriage Services",
-      "price": 34.28,
+      "price": 34.14,
       "pe": 12.3,
-      "pct1mo": -14.8,
+      "pct1mo": -15.2,
       "why": "Runs funeral homes and cemeteries. Results were roughly in line on Aug 5, yet shares are still down 15% \u2014 looks more sector-driven than tied to the earnings print itself."
     }
   ]

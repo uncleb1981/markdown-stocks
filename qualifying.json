@@ -1,4 +1,40 @@
 {
   "generatedDate": "2026-08-12",
-  "tickers": []
+  "tickers": [
+    {
+      "ticker": "NYAX",
+      "name": "Nayax",
+      "rsi": 29,
+      "pct1mo": -26.9,
+      "resetScore": 69
+    },
+    {
+      "ticker": "PLTK",
+      "name": "Playtika",
+      "rsi": 28,
+      "pct1mo": -38.8,
+      "resetScore": 55
+    },
+    {
+      "ticker": "ATS",
+      "name": "ATS Corporation",
+      "rsi": 27,
+      "pct1mo": -25.3,
+      "resetScore": 40
+    },
+    {
+      "ticker": "BLLN",
+      "name": "BillionToOne",
+      "rsi": 37,
+      "pct1mo": -29.7,
+      "resetScore": 39
+    },
+    {
+      "ticker": "TTD",
+      "name": "Trade Desk",
+      "rsi": 29,
+      "pct1mo": -25.4,
+      "resetScore": 37
+    }
+  ]
 }

@@ -80,14 +80,14 @@
     align-items: center;
     justify-content: center;
     padding: 16px 0;
-    height: 480px;
+    height: 520px;
     flex-shrink: 0;
   }
   .stack {
     position: relative;
     width: 100%;
     height: 100%;
-    max-height: 480px;
+    max-height: 520px;
   }
   .card {
     position: absolute;
@@ -367,8 +367,8 @@
 <div class="app">
   <header>
     <h1>The Reset</h1>
-    <div class="tagline">The price broke. The fundamentals didn't.</div>
-    <div class="tagline-sub">Swipe to back the ones that hold up.</div>
+    <div class="tagline">One brutal quarter — cleared on purpose.</div>
+    <div class="tagline-sub">Swipe to flag the resets worth watching.</div>
     <div class="sub" id="subLabel">Loading…</div>
     <div class="disclaimer">Informational only — not investment advice.</div>
   </header>
@@ -392,23 +392,23 @@
   <h2>Board Notes</h2>
   <div class="faq-item">
     <div class="q">What is this?</div>
-    <div class="a">Picture the board meeting the week a stock drops. The market panicked; the board didn't — it went back to the actual numbers: growth, margins, valuation, momentum. The price broke. The fundamentals didn't — that's the whole thesis. The Reset shows you only the companies where that internal check still comes back clean, not just anything that happens to be down. It's a personal research tool, not a stock-picking service.</div>
+    <div class="a">Sometimes a company doesn't just have a bad quarter — it chooses one. A new CEO writes off everything undesirable in a single shot so next year looks better by comparison. A board resets expectations hard, all at once, instead of bleeding bad news out over four quarters — often timed to make the turnaround story attractive enough to recruit new leadership into. The Reset looks for the fingerprints of that: a real, recent, unusually large earnings miss (or a swing straight into a loss), a serious price reaction, and — when it can be confirmed — a leadership change that lines up with the timing. It's a personal research tool for spotting deliberate resets, not a stock-picking service.</div>
   </div>
   <div class="faq-item">
     <div class="q">What does the board actually check?</div>
-    <div class="a">Every name has to clear all of these: down 10-30% in the last month (a real drop, not a full collapse) · P/E and forward P/E under 22 · PEG under 1 (priced well relative to its growth rate) · net profit margin over 5% and return on equity over 10% (real profitability, not accounting noise) · RSI under 45 (actually oversold) · 5-day average volume under 80% of its 30-day average (the selling has visibly calmed down) · market cap over $1 billion · positive EPS growth, and positive revenue growth when that data is reported · no banks or pharmaceutical companies. Some days nothing clears every check — the bar is intentionally high, and that's a real result, not a bug.</div>
+    <div class="a">Every name has to clear: down 20%+ in the last month · market cap over $1 billion · RSI under 45 (genuinely oversold) · a real, recent earnings miss or a swing to a loss · no banks, pharmaceutical, or biotech companies (their swings are usually regulatory or macro-driven, not a deliberate reset). What survives gets ranked by Reset Score, not by company size.</div>
   </div>
   <div class="faq-item">
     <div class="q">What is the Reset Score?</div>
-    <div class="a">Every name that clears the checklist gets scored 0-100 on how strongly it fits the thesis, not just whether it technically qualifies: stronger margins, ROE, and growth push it up; a more reasonable valuation pushes it up; a decline that's meaningful but not alarming pushes it up (the sweet spot is the middle of the -10% to -30% range, not either extreme); a lower RSI pushes it up; and volume that's cooled off more sharply pushes it up. Cards are ordered highest score first — that's the ranking you're swiping through, not market cap.</div>
+    <div class="a">0-100, weighted toward how dramatic and recent the reset looks: the size of the earnings miss (45%), how hard the stock actually fell (25%), how oversold the RSI is (20%), and a bonus (10%) if a genuine, recently confirmed leadership change — a new CEO or CFO — lines up with the timing. That last part is best-effort: it comes from a web search, not a data feed, and a card says so plainly when nothing turned up rather than implying the search came back clean.</div>
   </div>
   <div class="faq-item">
     <div class="q">Where does the board's read come from?</div>
-    <div class="a">It's built from real reported earnings — beat or miss vs. estimates, and the report date — not a news search. A beat that still sold off is flagged as likely guidance-driven; a miss is called out directly. The board's read won't catch a specific event (a downgrade, a lawsuit, a recall) unless that shows up in the earnings numbers themselves.</div>
+    <div class="a">Two places: real reported earnings (actual vs. estimate, and the report date) for the size of the miss, and a web search for recent leadership changes at the company. The earnings side is solid data. The leadership side is best-effort — it can miss a real change, or be out of date — and a card will say directly when that search came up empty instead of pretending it checked and found nothing.</div>
   </div>
   <div class="faq-item">
     <div class="q">How long should I hold one of these?</div>
-    <div class="a">The board doesn't set a hold date. It watches for the same signals that got a name into the boardroom in the first place — the next earnings report, and the RSI level clearing 45. Once a pick no longer resets against those same checks, the original case is gone. That's a more honest signal than a calendar reminder.</div>
+    <div class="a">The board doesn't set a hold date. Watch the same signals that flagged it in the first place — the next earnings report (when one's shown) and the RSI level clearing 45. Once a name no longer looks like an active reset, the original case is gone. That's a more honest signal than a calendar reminder.</div>
   </div>
   <div class="faq-item">
     <div class="q">Is this investment advice?</div>
@@ -486,7 +486,7 @@ function renderStack() {
       </div>
       <div class="name">${c.name}</div>
       <div class="stat-line">
-        <span class="down">${c.pct1mo.toFixed(1)}% past month</span><span class="sep">·</span><span class="pe">${c.pe}x P/E</span>
+        <span class="down">${c.pct1mo.toFixed(1)}% past month</span>${c.pe != null ? `<span class="sep">·</span><span class="pe">${c.pe}x P/E</span>` : ""}
       </div>
       <div class="why">${c.why}</div>
       ${c.nextEarnings || c.rsi != null ? `

@@ -1,6 +1,62 @@
 {
   "generatedDate": "2026-08-12",
-  "criteria": "Down 10-30% over 1 month, P/E and Forward P/E under 22, PEG under 1, net profit margin over 5%, return on equity over 10%, RSI under 45, 5-day average volume under 80% of 30-day average, market cap over $1B, positive EPS growth, positive revenue growth when reported, excludes banks and pharmaceutical companies — ranked by Reset Score (0-100)",
+  "criteria": "Down 20%+ over 1 month, market cap over $1B, RSI under 45, a real recent earnings miss (or swing to a loss), excludes banks, pharma, and biotech \u2014 ranked by Reset Score (0-100): earnings-shock size, price-drop severity, RSI, and a confirmed recent leadership change as a bonus signal",
   "disclaimer": "Informational screener only, not investment advice. Data from live market feed. Not a recommendation to buy or sell any security.",
-  "cards": []
+  "cards": [
+    {
+      "ticker": "NYAX",
+      "name": "Nayax",
+      "price": 49.88,
+      "pe": 252.9,
+      "pct1mo": -26.9,
+      "why": "Runs a global payments and commerce platform. Swung from an expected profit to an outright loss this quarter \u2014 one of the sharpest misses in this group \u2014 and shares are down 27% since. No leadership change surfaced in our research; this looks like an operational reset standing on its own.",
+      "nextEarnings": "Nov 18",
+      "rsi": 29,
+      "resetScore": 69
+    },
+    {
+      "ticker": "PLTK",
+      "name": "Playtika",
+      "price": 2.44,
+      "pe": null,
+      "pct1mo": -38.8,
+      "why": "Develops and operates mobile games. CFO Craig Abrahams is departing (an acting CFO steps in) right on top of a quarter that missed estimates by 30% amid a $206M annual loss \u2014 a leadership shakeup landing on the worst print in a while, with shares down 39%.",
+      "nextEarnings": "Nov 5",
+      "rsi": 28,
+      "resetScore": 55
+    },
+    {
+      "ticker": "ATS",
+      "name": "ATS Corporation",
+      "price": 20.35,
+      "pe": 58.9,
+      "pct1mo": -25.3,
+      "why": "Runs automated manufacturing and assembly systems. New CEO Doug Wright took over in January 2026 after predecessor Andrew Hider's abrupt mid-2025 departure, and the first quarter fully under him missed estimates by 14% \u2014 a classic new-broom reset, shares down 25% since.",
+      "nextEarnings": null,
+      "rsi": 27,
+      "resetScore": 40
+    },
+    {
+      "ticker": "BLLN",
+      "name": "BillionToOne",
+      "price": 97.45,
+      "pe": 148.8,
+      "pct1mo": -29.7,
+      "why": "Makes molecular diagnostics tests. Missed estimates by 38% this quarter, and shares are down 30% since. No confirmed leadership change turned up in our research \u2014 this reads as a large one-time miss rather than a documented executive-driven reset.",
+      "nextEarnings": null,
+      "rsi": 37,
+      "resetScore": 39
+    },
+    {
+      "ticker": "TTD",
+      "name": "Trade Desk",
+      "price": 13.46,
+      "pe": 16.1,
+      "pct1mo": -25.4,
+      "why": "Runs a programmatic ad-buying platform. Its finance seat has turned over three times in under a year \u2014 a CFO out after 6 months, an interim, now a third hire in July \u2014 and the latest quarter missed estimates by 8%, with shares down 25% since.",
+      "nextEarnings": "Nov 5",
+      "rsi": 29,
+      "resetScore": 37
+    }
+  ]
 }

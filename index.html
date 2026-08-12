@@ -622,7 +622,10 @@ fetch("cards.json?_=" + Date.now())
     cards = data.cards || [];
     const dateStr = data.generatedDate || "";
     const expected = mostRecentExpectedBusinessDate();
-    const isStale = dateStr && dateStr !== expected;
+    // ISO YYYY-MM-DD strings compare lexicographically = chronologically.
+    // Data dated on/after the expected floor is fresh even if not an exact
+    // match (e.g. a manual refresh run ahead of the scheduled time).
+    const isStale = dateStr && dateStr < expected;
     const subEl = document.getElementById("subLabel");
     subEl.textContent = isStale
       ? `${cards.length} picks · ${dateStr} — not updated yet, expected ${expected}`

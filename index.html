@@ -231,6 +231,9 @@
     text-decoration: underline;
     text-underline-offset: 2px;
   }
+  #watchlistBtn.has-alert {
+    color: #e0a83e;
+  }
 
   .empty {
     text-align: center;
@@ -287,6 +290,20 @@
   }
   .saved-item:last-child { border-bottom: none; }
   .saved-item .t { font-weight: 700; }
+  .reset-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(224,168,62,0.14);
+    border: 1px solid rgba(224,168,62,0.35);
+    color: #e0a83e;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    vertical-align: middle;
+  }
   .saved-item .meta { color: var(--muted); font-size: 13px; }
   .sheet-close {
     display: block;
@@ -398,6 +415,7 @@
 const STORAGE_KEY = "resetcards_saved";
 let cards = [];
 let idx = 0;
+let qualifyingSet = null; // null = not loaded yet, don't show alerts until we have real data
 
 function loadSaved() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
@@ -522,6 +540,7 @@ function commitSwipe(isSave, cardData) {
       saved.push({ ticker: cardData.ticker, name: cardData.name, savedOn: new Date().toISOString().slice(0,10), priceThen: cardData.price });
       saveSaved(saved);
       updateSavedCount();
+      updateBoardroomAlert();
     }
   }
   idx++;
@@ -535,14 +554,31 @@ document.getElementById("saveBtn").addEventListener("click", () => {
   if (idx < cards.length) commitSwipe(true, cards[idx]);
 });
 
+function countResetComplete(list) {
+  if (!qualifyingSet) return 0;
+  return list.filter(s => !qualifyingSet.has(s.ticker)).length;
+}
+
 function renderWatchlistSheet() {
   const list = loadSaved();
   const container = document.getElementById("savedList");
   container.innerHTML = list.length
-    ? list.slice().reverse().map(s => `<div class="saved-item"><span class="t">${s.ticker}</span><span class="meta">${s.name} · ${s.savedOn} @ $${s.priceThen}</span></div>`).join("")
+    ? list.slice().reverse().map(s => {
+        const noLongerQualifies = qualifyingSet && !qualifyingSet.has(s.ticker);
+        const badge = noLongerQualifies ? `<span class="reset-badge">Reset complete</span>` : "";
+        return `<div class="saved-item"><span class="t">${s.ticker}${badge}</span><span class="meta">${s.name} · ${s.savedOn} @ $${s.priceThen}</span></div>`;
+      }).join("")
     : `<p style="color:var(--muted); font-size:14.5px;">Nothing backed yet.</p>`;
   const clearBtn = document.getElementById("clearBtn");
   clearBtn.disabled = list.length === 0;
+  updateBoardroomAlert();
+}
+
+function updateBoardroomAlert() {
+  const list = loadSaved();
+  const resetCount = countResetComplete(list);
+  const btn = document.getElementById("watchlistBtn");
+  btn.classList.toggle("has-alert", resetCount > 0);
 }
 
 document.getElementById("watchlistBtn").addEventListener("click", () => {
@@ -597,6 +633,21 @@ fetch("cards.json?_=" + Date.now())
   })
   .catch(() => {
     document.getElementById("subLabel").textContent = "Couldn't load today's picks";
+  });
+
+// Separate from cards.json (today's top picks) — this is the FULL list of
+// tickers currently clearing every filter, used only to flag Boardroom
+// entries that have "reset complete" (no longer qualify). A ticker can be
+// absent from cards.json (not top-7 by market cap) but still be here, so
+// we never use cards.json alone to decide this.
+fetch("qualifying.json?_=" + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    qualifyingSet = new Set((data.tickers || []).map(t => t.ticker));
+    updateBoardroomAlert();
+  })
+  .catch(() => {
+    qualifyingSet = null; // stay silent rather than guess
   });
 </script>
 </body>

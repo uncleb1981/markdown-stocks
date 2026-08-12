@@ -24,7 +24,6 @@
     background: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-    overflow-x: hidden;
     -webkit-user-select: none;
     user-select: none;
   }
@@ -34,6 +33,10 @@
     max-width: 440px;
     margin: 0 auto;
     padding: 0 20px;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 5;
   }
   header {
     padding: 20px 0 6px;

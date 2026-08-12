@@ -1,11 +1,4 @@
 {
   "generatedDate": "2026-08-12",
-  "tickers": [
-    {"ticker": "ONON", "name": "On Holding", "rsi": 32, "pct1mo": -13.7},
-    {"ticker": "DRVN", "name": "Driven Brands", "rsi": 35, "pct1mo": -13.5},
-    {"ticker": "NVGS", "name": "Navigator Holdings", "rsi": 38, "pct1mo": -10.4},
-    {"ticker": "NGVC", "name": "Natural Grocers", "rsi": 37, "pct1mo": -13.9},
-    {"ticker": "LMB", "name": "Limbach", "rsi": 26, "pct1mo": -35.3},
-    {"ticker": "CSV", "name": "Carriage Services", "rsi": 31, "pct1mo": -16.4}
-  ]
+  "tickers": []
 }

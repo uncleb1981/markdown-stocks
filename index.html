@@ -116,10 +116,26 @@
     font-weight: 800;
     letter-spacing: -0.02em;
   }
+  .price-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
   .ticker-line .price {
     font-size: 20px;
     color: var(--muted);
     font-weight: 600;
+  }
+  .reset-score {
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: rgba(56,198,126,0.14);
+    border: 1px solid rgba(56,198,126,0.35);
+    color: var(--green);
+    white-space: nowrap;
   }
   .name {
     color: var(--muted);
@@ -351,7 +367,7 @@
 <div class="app">
   <header>
     <h1>The Reset</h1>
-    <div class="tagline">The stock reset. The board didn't blink.</div>
+    <div class="tagline">The price broke. The fundamentals didn't.</div>
     <div class="tagline-sub">Swipe to back the ones that hold up.</div>
     <div class="sub" id="subLabel">Loading…</div>
     <div class="disclaimer">Informational only — not investment advice.</div>
@@ -376,11 +392,15 @@
   <h2>Board Notes</h2>
   <div class="faq-item">
     <div class="q">What is this?</div>
-    <div class="a">Picture the board meeting the week a stock drops. The market panicked; the board didn't — it went back to the actual numbers: growth, margins, debt, profitability. The Reset shows you only the companies where that internal check still comes back clean. A stock that just fell isn't a reset. A stock that fell and the fundamentals still hold — that is. It's a personal research tool, not a stock-picking service.</div>
+    <div class="a">Picture the board meeting the week a stock drops. The market panicked; the board didn't — it went back to the actual numbers: growth, margins, valuation, momentum. The price broke. The fundamentals didn't — that's the whole thesis. The Reset shows you only the companies where that internal check still comes back clean, not just anything that happens to be down. It's a personal research tool, not a stock-picking service.</div>
   </div>
   <div class="faq-item">
     <div class="q">What does the board actually check?</div>
-    <div class="a">Every name has to pass the board's own checklist: down 10%+ in the last month · P/E and forward P/E under 22 · PEG under 1 (priced well relative to its growth rate — the classic "undervalued" threshold, not just a low P/E) · net profit margin over 3% and return on equity over 5% (rules out financially fragile companies) · RSI under 45 (actually oversold, not just recently down) · trading volume under its own 30-day average (hasn't been widely noticed yet) · market cap over $300M · no banks or pharmaceutical companies. Whatever clears the checklist gets ranked by market cap — the top 7 make the boardroom, though some days fewer than 7 names pass everything.</div>
+    <div class="a">Every name has to clear all of these: down 10-30% in the last month (a real drop, not a full collapse) · P/E and forward P/E under 22 · PEG under 1 (priced well relative to its growth rate) · net profit margin over 5% and return on equity over 10% (real profitability, not accounting noise) · RSI under 45 (actually oversold) · 5-day average volume under 80% of its 30-day average (the selling has visibly calmed down) · market cap over $1 billion · positive EPS growth, and positive revenue growth when that data is reported · no banks or pharmaceutical companies. Some days nothing clears every check — the bar is intentionally high, and that's a real result, not a bug.</div>
+  </div>
+  <div class="faq-item">
+    <div class="q">What is the Reset Score?</div>
+    <div class="a">Every name that clears the checklist gets scored 0-100 on how strongly it fits the thesis, not just whether it technically qualifies: stronger margins, ROE, and growth push it up; a more reasonable valuation pushes it up; a decline that's meaningful but not alarming pushes it up (the sweet spot is the middle of the -10% to -30% range, not either extreme); a lower RSI pushes it up; and volume that's cooled off more sharply pushes it up. Cards are ordered highest score first — that's the ranking you're swiping through, not market cap.</div>
   </div>
   <div class="faq-item">
     <div class="q">Where does the board's read come from?</div>
@@ -435,10 +455,15 @@ function renderStack() {
   const total = remaining.length;
 
   if (idx >= cards.length) {
-    stack.innerHTML = `<div class="empty">
-      <h2>That's the full board today.</h2>
-      <p>New session tomorrow at 8:10am.</p>
-    </div>`;
+    stack.innerHTML = cards.length === 0
+      ? `<div class="empty">
+          <h2>No names cleared the checklist today.</h2>
+          <p>That happens — the bar is intentionally high. New session tomorrow at 8:10am.</p>
+        </div>`
+      : `<div class="empty">
+          <h2>That's the full board today.</h2>
+          <p>New session tomorrow at 8:10am.</p>
+        </div>`;
     document.getElementById("countLabel").textContent = `${cards.length} of ${cards.length}`;
     return;
   }
@@ -454,7 +479,10 @@ function renderStack() {
       <div class="stamp skip">PASS</div>
       <div class="ticker-line">
         <span class="ticker">${c.ticker}</span>
-        <span class="price">$${c.price}</span>
+        <div class="price-col">
+          <span class="price">$${c.price}</span>
+          ${c.resetScore != null ? `<span class="reset-score">Reset ${c.resetScore}</span>` : ""}
+        </div>
       </div>
       <div class="name">${c.name}</div>
       <div class="stat-line">

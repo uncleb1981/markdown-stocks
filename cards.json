@@ -1,67 +1,6 @@
 {
   "generatedDate": "2026-08-12",
-  "criteria": "Down 10%+ over 1 month, P/E and Forward P/E under 22, PEG under 1, net profit margin over 3%, return on equity over 5%, RSI under 45, relative volume under 1x 30-day average, market cap over $300M, excludes banks and pharmaceutical companies \u2014 top 7 by market cap",
+  "criteria": "Down 10-30% over 1 month, P/E and Forward P/E under 22, PEG under 1, net profit margin over 5%, return on equity over 10%, RSI under 45, 5-day average volume under 80% of 30-day average, market cap over $1B, positive EPS growth, positive revenue growth when reported, excludes banks and pharmaceutical companies — ranked by Reset Score (0-100)",
   "disclaimer": "Informational screener only, not investment advice. Data from live market feed. Not a recommendation to buy or sell any security.",
-  "cards": [
-    {
-      "ticker": "ONON",
-      "name": "On Holding",
-      "price": 31.27,
-      "pe": 21.2,
-      "pct1mo": -13.7,
-      "why": "Makes On running shoes and performance apparel. Beat estimates today (Aug 11) by 7%, but most of this month's 14% drop happened before the print \u2014 today's beat hasn't been priced in yet.",
-      "nextEarnings": "Nov 11",
-      "rsi": 32
-    },
-    {
-      "ticker": "DRVN",
-      "name": "Driven Brands",
-      "price": 12.34,
-      "pe": 12.5,
-      "pct1mo": -13.5,
-      "why": "Provides auto services through brands like Take 5 Oil Change and Meineke. Beat estimates by 12% on Aug 6, yet shares fell 14% \u2014 another beat that guidance or sector jitters overshadowed.",
-      "nextEarnings": "Nov 3",
-      "rsi": 35
-    },
-    {
-      "ticker": "NVGS",
-      "name": "Navigator Holdings",
-      "price": 20.03,
-      "pe": 9.3,
-      "pct1mo": -10.4,
-      "why": "Owns and operates liquefied gas carrier ships. Beat estimates by 55% on Aug 4, yet shares are still down 10% \u2014 a big beat the market largely ignored, likely on shipping-rate or macro concerns rather than the print.",
-      "nextEarnings": "Nov 3",
-      "rsi": 38
-    },
-    {
-      "ticker": "NGVC",
-      "name": "Natural Grocers",
-      "price": 27.61,
-      "pe": 13.4,
-      "pct1mo": -13.9,
-      "why": "Runs Natural Grocers, a natural and organic grocery chain. Missed estimates by 8% on Aug 6, and shares are down 14% \u2014 a fairly direct reaction to the miss.",
-      "nextEarnings": "Nov 19",
-      "rsi": 37
-    },
-    {
-      "ticker": "LMB",
-      "name": "Limbach",
-      "price": 46.4,
-      "pe": 18.5,
-      "pct1mo": -35.3,
-      "why": "A commercial HVAC, plumbing, and electrical contractor. Missed estimates by 32% on Aug 4 \u2014 one of the sharpest misses in this group \u2014 and shares are down 35% since, largely explained by that result.",
-      "nextEarnings": "Nov 3",
-      "rsi": 26
-    },
-    {
-      "ticker": "CSV",
-      "name": "Carriage Services",
-      "price": 33.64,
-      "pe": 12.1,
-      "pct1mo": -16.4,
-      "why": "Runs funeral homes and cemeteries. Results were roughly in line on Aug 5, yet shares are still down 16% \u2014 looks more sector-driven than tied to the earnings print itself.",
-      "nextEarnings": "Nov 4",
-      "rsi": 31
-    }
-  ]
+  "cards": []
 }

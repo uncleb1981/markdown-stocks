@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y1r18ewssq");
+</script>
 <title>Clearing the Decks</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%82%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <style>
@@ -27,12 +34,24 @@
     -webkit-user-select: none;
     user-select: none;
   }
-  .app {
-    display: flex;
-    flex-direction: column;
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "shortlist"
+      "main";
     max-width: 440px;
     margin: 0 auto;
     padding: 0 20px;
+  }
+  .layout > header { grid-area: header; }
+  .layout > .shortlist-panel { grid-area: shortlist; min-width: 0; }
+  .main-col {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
   }
   header {
     padding: 20px 0 6px;
@@ -186,7 +205,7 @@
     flex-shrink: 0;
   }
   .swipe-hint .hint-skip { color: var(--red); }
-  .swipe-hint .hint-save { color: var(--green); }
+  .swipe-hint .hint-keep { color: var(--green); }
 
   .stamp {
     position: absolute;
@@ -203,7 +222,7 @@
     background: rgba(0,0,0,0.55);
     z-index: 5;
   }
-  .stamp.save { color: var(--green); border-color: var(--green); transform: translate(-50%, -50%) rotate(-8deg); }
+  .stamp.keep { color: var(--green); border-color: var(--green); transform: translate(-50%, -50%) rotate(-8deg); }
   .stamp.skip { color: var(--red); border-color: var(--red); transform: translate(-50%, -50%) rotate(8deg); }
 
   .controls {
@@ -225,86 +244,76 @@
     min-width: 130px;
   }
   .btn.skip { color: var(--red); border-color: var(--red); }
-  .btn.save { color: var(--green); border-color: var(--green); }
+  .btn.keep { color: var(--green); border-color: var(--green); }
   .btn:active { transform: scale(0.96); }
 
   .footer-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 0 16px;
     flex-shrink: 0;
     font-size: 13.5px;
     color: var(--muted-2);
   }
-  .footer-row button {
-    background: none;
-    border: none;
-    color: var(--muted-2);
-    font-size: 13.5px;
-    cursor: pointer;
-    padding: 0;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  #watchlistBtn.has-alert {
-    color: #e0a83e;
-  }
 
-  .empty {
-    text-align: center;
-    color: var(--muted);
-    padding: 30px 10px;
+  .shortlist-panel {
+    padding: 14px 0 10px;
+    min-width: 0;
   }
-  .empty h2 { color: var(--text); font-size: 18px; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; }
-  .empty p { font-size: 14.5px; line-height: 1.5; margin: 0; }
-
-  .sheet-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    display: none;
-    align-items: flex-end;
-    z-index: 10;
-  }
-  .sheet-backdrop.open { display: flex; }
-  .sheet {
-    background: var(--card);
-    width: 100%;
-    max-width: 440px;
-    margin: 0 auto;
-    border-radius: 20px 20px 0 0;
-    max-height: 70vh;
-    overflow-y: auto;
-    padding: 20px 20px 28px;
-    border: 1px solid var(--card-border);
-    border-bottom: none;
-  }
-  .sheet-header {
+  .shortlist-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
   }
-  .sheet h3 { margin: 0; font-size: 17px; font-weight: 700; }
+  .shortlist-header h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .shortlist-header .count { color: var(--muted-2); font-weight: 600; }
+  .shortlist-header.has-alert h3,
+  .shortlist-header.has-alert .count {
+    color: #e0a83e;
+  }
   .clear-btn {
     background: none;
     border: none;
     color: var(--red);
-    font-size: 13.5px;
+    font-size: 12.5px;
     font-weight: 600;
     cursor: pointer;
     padding: 0;
+    flex-shrink: 0;
   }
   .clear-btn[disabled] { color: var(--muted-2); cursor: default; }
-  .saved-item {
+  .shortlist-list {
     display: flex;
-    justify-content: space-between;
-    padding: 11px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 14.5px;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
   }
-  .saved-item:last-child { border-bottom: none; }
-  .saved-item .t { font-weight: 700; }
+  .shortlist-list::-webkit-scrollbar { display: none; }
+  .shortlist-item {
+    flex: 0 0 auto;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .shortlist-item .t { font-weight: 700; }
+  .shortlist-item .meta { display: none; }
+  .shortlist-empty {
+    color: var(--muted-2);
+    font-size: 13.5px;
+    padding: 4px 0;
+    margin: 0;
+  }
   .reset-badge {
     display: inline-block;
     margin-left: 8px;
@@ -319,19 +328,42 @@
     letter-spacing: 0.03em;
     vertical-align: middle;
   }
-  .saved-item .meta { color: var(--muted); font-size: 13px; }
-  .sheet-close {
-    display: block;
-    width: 100%;
-    margin: 16px auto 0;
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 14.5px;
-    font-weight: 600;
+
+  @media (min-width: 860px) {
+    .layout {
+      grid-template-columns: minmax(0, 440px) 280px;
+      grid-template-areas:
+        "header header"
+        "main shortlist";
+      max-width: 760px;
+      column-gap: 28px;
+    }
+    .shortlist-panel { padding: 24px 0 0; }
+    .shortlist-list {
+      flex-direction: column;
+      overflow-x: visible;
+      overflow-y: auto;
+      max-height: 520px;
+    }
+    .shortlist-item {
+      white-space: normal;
+      width: 100%;
+    }
+    .shortlist-item .meta {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+    }
   }
+
+  .empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 30px 10px;
+  }
+  .empty h2 { color: var(--text); font-size: 18px; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; }
+  .empty p { font-size: 14.5px; line-height: 1.5; margin: 0; }
 
   .faq {
     max-width: 440px;
@@ -363,27 +395,36 @@
 </style>
 </head>
 <body>
-<div class="app">
+<div class="layout">
   <header>
     <h1>Clearing the Decks</h1>
     <div class="tagline">One brutal quarter — cleared on purpose.</div>
-    <div class="tagline-sub">Swipe to flag the resets worth watching.</div>
+    <div class="tagline-sub">Swipe to shortlist the resets worth watching.</div>
     <div class="sub" id="subLabel">Loading…</div>
     <div class="disclaimer">Informational only — not investment advice.</div>
   </header>
 
-  <div class="stack-wrap">
-    <div class="stack" id="stack"></div>
-  </div>
+  <aside class="shortlist-panel">
+    <div class="shortlist-header" id="shortlistHeader">
+      <h3>Shortlist <span class="count" id="shortlistCount">(0)</span></h3>
+      <button class="clear-btn" id="clearBtn" disabled>Clear all</button>
+    </div>
+    <div class="shortlist-list" id="shortlistList"></div>
+  </aside>
 
-  <div class="controls">
-    <button class="btn skip" id="skipBtn">✕ Pass</button>
-    <button class="btn save" id="saveBtn">✓ Back</button>
-  </div>
+  <div class="main-col">
+    <div class="stack-wrap">
+      <div class="stack" id="stack"></div>
+    </div>
 
-  <div class="footer-row">
-    <span id="countLabel">—</span>
-    <button id="watchlistBtn">Boardroom (<span id="savedCount">0</span>)</button>
+    <div class="controls">
+      <button class="btn skip" id="skipBtn">✕ Pass</button>
+      <button class="btn keep" id="keepBtn">✓ Keep</button>
+    </div>
+
+    <div class="footer-row">
+      <span id="countLabel">—</span>
+    </div>
   </div>
 </div>
 
@@ -391,11 +432,11 @@
   <h2>Board Notes</h2>
   <div class="faq-item">
     <div class="q">What is this?</div>
-    <div class="a">Sometimes a company doesn't just have a bad quarter — it chooses one. A new CEO writes off everything undesirable in a single shot so next year looks better by comparison. A board resets expectations hard, all at once, instead of bleeding bad news out over four quarters — often timed to make the turnaround story attractive enough to recruit new leadership into. Clearing the Decks looks for the fingerprints of that: a real, recent, unusually large earnings miss (or a swing straight into a loss), a serious price reaction, and — when it can be confirmed — a leadership change that lines up with the timing. It's a personal research tool for spotting deliberate resets, not a stock-picking service.</div>
+    <div class="a">Sometimes a company doesn't just have a bad quarter — it chooses one. A new CEO writes off everything undesirable in a single shot so next year looks better by comparison. A board resets expectations hard, all at once, instead of bleeding bad news out over four quarters — often timed to make the turnaround story attractive enough to recruit new leadership into. Clearing the Decks looks for the fingerprints of that: a real, recent, unusually large earnings miss (or a swing straight into a loss), a serious price reaction, and — when it can be confirmed — a leadership change that lines up with the timing. It also checks that the business underneath is still standing — see the revenue check below — because a deliberate reset only counts if there's something intact left to turn around. It's a personal research tool for spotting deliberate resets, not a stock-picking service.</div>
   </div>
   <div class="faq-item">
     <div class="q">What does the board actually check?</div>
-    <div class="a">Every name has to clear: down 20%+ in the last month · market cap over $1 billion · RSI under 45 (genuinely oversold) · a real, recent earnings miss or a swing to a loss · no banks, pharmaceutical, or biotech companies (their swings are usually regulatory or macro-driven, not a deliberate reset). What survives gets ranked by Reset Score, not by company size.</div>
+    <div class="a">Every name has to clear: down 20%+ in the last month · market cap over $1 billion · RSI under 45 (genuinely oversold) · a real, recent earnings miss or a swing to a loss · gross margin still positive and revenue not collapsing (down less than 25% year-over-year, and not declining in three or more of the last four quarters) · no banks, pharmaceutical, or biotech companies (their swings are usually regulatory or macro-driven, not a deliberate reset). What survives gets ranked by Reset Score, not by company size.</div>
   </div>
   <div class="faq-item">
     <div class="q">What is the Reset Score?</div>
@@ -403,7 +444,7 @@
   </div>
   <div class="faq-item">
     <div class="q">Where does the board's read come from?</div>
-    <div class="a">Two places: real reported earnings (actual vs. estimate, and the report date) for the size of the miss, and a web search for recent leadership changes at the company. The earnings side is solid data. The leadership side is best-effort — it can miss a real change, or be out of date — and a card will say directly when that search came up empty instead of pretending it checked and found nothing.</div>
+    <div class="a">Reported financials for the earnings miss and the revenue/margin check, and a web search for recent leadership changes. The financial side is solid data — but it stops at revenue and margins; there's no reliable feed for things like debt load or a formal going-concern warning, so "structurally sound" here specifically means the revenue check, not a full balance-sheet review. The leadership side is best-effort — it can miss a real change, or be out of date — and a card will say directly when that search came up empty instead of pretending it checked and found nothing.</div>
   </div>
   <div class="faq-item">
     <div class="q">How long should I hold one of these?</div>
@@ -419,32 +460,18 @@
   </div>
 </section>
 
-<div class="sheet-backdrop" id="sheetBackdrop">
-  <div class="sheet">
-    <div class="sheet-header">
-      <h3>Boardroom</h3>
-      <button class="clear-btn" id="clearBtn">Clear all</button>
-    </div>
-    <div id="savedList"></div>
-    <button class="sheet-close" id="sheetClose">Close</button>
-  </div>
-</div>
-
 <script>
 const STORAGE_KEY = "resetcards_saved";
 let cards = [];
 let idx = 0;
 let qualifyingSet = null; // null = not loaded yet, don't show alerts until we have real data
 
-function loadSaved() {
+function loadShortlist() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
   catch { return []; }
 }
-function saveSaved(list) {
+function storeShortlist(list) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-}
-function updateSavedCount() {
-  document.getElementById("savedCount").textContent = loadSaved().length;
 }
 
 function renderStack() {
@@ -474,7 +501,7 @@ function renderStack() {
     el.style.zIndex = i;
     el.style.transform = `scale(${1 - (total - 1 - i) * 0.03}) translateY(${(total - 1 - i) * 10}px)`;
     el.innerHTML = `
-      <div class="stamp save">BACK</div>
+      <div class="stamp keep">KEEP</div>
       <div class="stamp skip">PASS</div>
       <div class="ticker-line">
         <span class="ticker">${c.ticker}</span>
@@ -495,7 +522,7 @@ function renderStack() {
       </div>` : ""}
       <div class="swipe-hint">
         <span class="hint-skip">← Pass</span>
-        <span class="hint-save">Back →</span>
+        <span class="hint-keep">Keep →</span>
       </div>
     `;
     stack.appendChild(el);
@@ -507,7 +534,7 @@ function renderStack() {
 
 function attachDrag(el, cardData) {
   let startX = 0, startY = 0, dx = 0, dy = 0, dragging = false;
-  const saveStamp = el.querySelector(".stamp.save");
+  const keepStamp = el.querySelector(".stamp.keep");
   const skipStamp = el.querySelector(".stamp.skip");
 
   function onDown(x, y) {
@@ -524,8 +551,8 @@ function attachDrag(el, cardData) {
     const rot = dx / 20;
     el.style.transform = `translate(${dx}px, 0) rotate(${rot}deg)`;
     const opacity = Math.min(Math.abs(dx) / 100, 1);
-    if (dx > 0) { saveStamp.style.opacity = opacity; skipStamp.style.opacity = 0; }
-    else { skipStamp.style.opacity = opacity; saveStamp.style.opacity = 0; }
+    if (dx > 0) { keepStamp.style.opacity = opacity; skipStamp.style.opacity = 0; }
+    else { skipStamp.style.opacity = opacity; keepStamp.style.opacity = 0; }
   }
   function onUp() {
     if (!dragging) return;
@@ -535,7 +562,7 @@ function attachDrag(el, cardData) {
       commitSwipe(dx > 0, cardData);
     } else {
       el.style.transform = "";
-      saveStamp.style.opacity = 0;
+      keepStamp.style.opacity = 0;
       skipStamp.style.opacity = 0;
     }
     dx = 0; dy = 0;
@@ -556,21 +583,20 @@ function attachDrag(el, cardData) {
   el.addEventListener("touchend", onUp);
 }
 
-function commitSwipe(isSave, cardData) {
+function commitSwipe(isKeep, cardData) {
   const stack = document.getElementById("stack");
   const top = stack.lastElementChild;
   if (top) {
-    const flyX = isSave ? 600 : -600;
-    top.style.transform = `translate(${flyX}px, -30px) rotate(${isSave ? 24 : -24}deg)`;
+    const flyX = isKeep ? 600 : -600;
+    top.style.transform = `translate(${flyX}px, -30px) rotate(${isKeep ? 24 : -24}deg)`;
     top.style.opacity = "0";
   }
-  if (isSave) {
-    const saved = loadSaved();
-    if (!saved.find(s => s.ticker === cardData.ticker)) {
-      saved.push({ ticker: cardData.ticker, name: cardData.name, savedOn: new Date().toISOString().slice(0,10), priceThen: cardData.price });
-      saveSaved(saved);
-      updateSavedCount();
-      updateBoardroomAlert();
+  if (isKeep) {
+    const list = loadShortlist();
+    if (!list.find(s => s.ticker === cardData.ticker)) {
+      list.push({ ticker: cardData.ticker, name: cardData.name, savedOn: new Date().toISOString().slice(0,10), priceThen: cardData.price });
+      storeShortlist(list);
+      renderShortlist();
     }
   }
   idx++;
@@ -580,7 +606,7 @@ function commitSwipe(isSave, cardData) {
 document.getElementById("skipBtn").addEventListener("click", () => {
   if (idx < cards.length) commitSwipe(false, cards[idx]);
 });
-document.getElementById("saveBtn").addEventListener("click", () => {
+document.getElementById("keepBtn").addEventListener("click", () => {
   if (idx < cards.length) commitSwipe(true, cards[idx]);
 });
 
@@ -589,41 +615,32 @@ function countResetComplete(list) {
   return list.filter(s => !qualifyingSet.has(s.ticker)).length;
 }
 
-function renderWatchlistSheet() {
-  const list = loadSaved();
-  const container = document.getElementById("savedList");
+// The shortlist strip is always on screen now (no button-triggered modal),
+// so this both draws the list and refreshes the count/alert state — call it
+// after any change instead of tracking those separately.
+function renderShortlist() {
+  const list = loadShortlist();
+  document.getElementById("shortlistCount").textContent = `(${list.length})`;
+
+  const container = document.getElementById("shortlistList");
   container.innerHTML = list.length
     ? list.slice().reverse().map(s => {
         const noLongerQualifies = qualifyingSet && !qualifyingSet.has(s.ticker);
         const badge = noLongerQualifies ? `<span class="reset-badge">Reset complete</span>` : "";
-        return `<div class="saved-item"><span class="t">${s.ticker}${badge}</span><span class="meta">${s.name} · ${s.savedOn} @ $${s.priceThen}</span></div>`;
+        return `<div class="shortlist-item"><span class="t">${s.ticker}${badge}</span><span class="meta">${s.name} · ${s.savedOn} @ $${s.priceThen}</span></div>`;
       }).join("")
-    : `<p style="color:var(--muted); font-size:14.5px;">Nothing backed yet.</p>`;
-  const clearBtn = document.getElementById("clearBtn");
-  clearBtn.disabled = list.length === 0;
-  updateBoardroomAlert();
-}
+    : `<p class="shortlist-empty">Nothing kept yet.</p>`;
 
-function updateBoardroomAlert() {
-  const list = loadSaved();
+  document.getElementById("clearBtn").disabled = list.length === 0;
   const resetCount = countResetComplete(list);
-  const btn = document.getElementById("watchlistBtn");
-  btn.classList.toggle("has-alert", resetCount > 0);
+  document.getElementById("shortlistHeader").classList.toggle("has-alert", resetCount > 0);
 }
 
-document.getElementById("watchlistBtn").addEventListener("click", () => {
-  renderWatchlistSheet();
-  document.getElementById("sheetBackdrop").classList.add("open");
-});
-document.getElementById("sheetClose").addEventListener("click", () => {
-  document.getElementById("sheetBackdrop").classList.remove("open");
-});
 document.getElementById("clearBtn").addEventListener("click", () => {
-  if (loadSaved().length === 0) return;
-  if (confirm("Clear everyone from the boardroom? This can't be undone.")) {
-    saveSaved([]);
-    updateSavedCount();
-    renderWatchlistSheet();
+  if (loadShortlist().length === 0) return;
+  if (confirm("Clear your shortlist? This can't be undone.")) {
+    storeShortlist([]);
+    renderShortlist();
   }
 });
 
@@ -661,7 +678,6 @@ fetch("cards.json?_=" + Date.now())
       ? `${cards.length} picks · ${dateStr} — not updated yet, expected ${expected}`
       : `${cards.length} picks · ${dateStr}`;
     subEl.classList.toggle("stale", isStale);
-    updateSavedCount();
     renderStack();
   })
   .catch(() => {
@@ -669,7 +685,7 @@ fetch("cards.json?_=" + Date.now())
   });
 
 // Separate from cards.json (today's top picks) — this is the FULL list of
-// tickers currently clearing every filter, used only to flag Boardroom
+// tickers currently clearing every filter, used only to flag Shortlist
 // entries that have "reset complete" (no longer qualify). A ticker can be
 // absent from cards.json (not top-7 by market cap) but still be here, so
 // we never use cards.json alone to decide this.
@@ -677,11 +693,13 @@ fetch("qualifying.json?_=" + Date.now())
   .then(r => r.json())
   .then(data => {
     qualifyingSet = new Set((data.tickers || []).map(t => t.ticker));
-    updateBoardroomAlert();
+    renderShortlist();
   })
   .catch(() => {
     qualifyingSet = null; // stay silent rather than guess
   });
+
+renderShortlist();
 </script>
 </body>
 </html>

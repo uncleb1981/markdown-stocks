@@ -691,7 +691,7 @@ fetch("cards.json?_=" + Date.now())
 // Separate from cards.json (today's top picks) — this is the FULL list of
 // tickers currently clearing every filter, used only to flag Shortlist
 // entries that have "reset complete" (no longer qualify). A ticker can be
-// absent from cards.json (not top-7 by market cap) but still be here, so
+// absent from cards.json (not top-20 by Reset Score) but still be here, so
 // we never use cards.json alone to decide this.
 fetch("qualifying.json?_=" + Date.now())
   .then(r => r.json())

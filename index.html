@@ -101,7 +101,7 @@
     padding: 26px;
     display: flex;
     flex-direction: column;
-    touch-action: none;
+    touch-action: pan-y;
     will-change: transform;
     transition: transform 0.25s ease, opacity 0.25s ease;
     cursor: grab;
@@ -522,8 +522,11 @@ function attachDrag(el, cardData) {
   function onMove(x, y) {
     if (!dragging) return;
     dx = x - startX; dy = y - startY;
+    // Horizontal-only: the card must never visually move vertically. This
+    // also lets a vertical touch pass through as normal page scroll (see
+    // touch-action: pan-y on .card) instead of fighting the drag gesture.
     const rot = dx / 20;
-    el.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg)`;
+    el.style.transform = `translate(${dx}px, 0) rotate(${rot}deg)`;
     const opacity = Math.min(Math.abs(dx) / 100, 1);
     if (dx > 0) { saveStamp.style.opacity = opacity; skipStamp.style.opacity = 0; }
     else { skipStamp.style.opacity = opacity; saveStamp.style.opacity = 0; }

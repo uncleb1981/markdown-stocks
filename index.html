@@ -72,13 +72,6 @@
     letter-spacing: -0.01em;
     margin-top: 10px;
   }
-  header .tagline-sub {
-    color: var(--muted);
-    font-size: 14.5px;
-    font-weight: 500;
-    line-height: 1.45;
-    margin-top: 4px;
-  }
   header .sub {
     color: var(--muted);
     font-size: 14.5px;
@@ -416,8 +409,7 @@
 <div class="layout">
   <header>
     <h1>Clearing the Decks</h1>
-    <div class="tagline">We find companies that deliberately reset their financials, often setting up real upside.</div>
-    <div class="tagline-sub">Swipe to build your shortlist, refreshed weekdays at 8:10am Central.</div>
+    <div class="tagline">We find deliberate resets, built for upside.</div>
     <div class="sub" id="subLabel">Loading…</div>
     <div class="disclaimer">Informational only. Not investment advice.</div>
   </header>
@@ -711,8 +703,8 @@ fetch("cards.json?_=" + Date.now())
     const isStale = dateStr && dateStr < expected;
     const subEl = document.getElementById("subLabel");
     subEl.textContent = isStale
-      ? `${cards.length} picks · ${dateStr} (not updated yet, expected ${expected})`
-      : `${cards.length} picks · ${dateStr}`;
+      ? `${cards.length} picks · Updated ${dateStr} (today's refresh hasn't run yet)`
+      : `${cards.length} picks · Updated ${dateStr} at 8:10am Central`;
     subEl.classList.toggle("stale", isStale);
     renderStack();
   })

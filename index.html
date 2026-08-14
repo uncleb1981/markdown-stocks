@@ -394,7 +394,7 @@
   <header>
     <h1>Clearing the Decks</h1>
     <div class="tagline">We find companies who reset their financial base.</div>
-    <div class="tagline-sub">Swipe to build your shortlist, refreshed daily.</div>
+    <div class="tagline-sub">Swipe to build your shortlist, refreshed weekdays at 8:10am Central.</div>
     <div class="sub" id="subLabel">Loading…</div>
     <div class="disclaimer">Informational only. Not investment advice.</div>
   </header>
@@ -455,7 +455,7 @@
   </div>
   <div class="faq-item">
     <div class="q">How often does it update?</div>
-    <div class="a">Every weekday at 8:10am, when the board reconvenes.</div>
+    <div class="a">Every weekday at 8:10am Central, when the board reconvenes.</div>
   </div>
 </section>
 
@@ -483,11 +483,11 @@ function renderStack() {
     stack.innerHTML = cards.length === 0
       ? `<div class="empty">
           <h2>No names cleared the checklist today.</h2>
-          <p>That happens. The bar is intentionally high. New session tomorrow at 8:10am.</p>
+          <p>That happens. The bar is intentionally high. New session tomorrow at 8:10am Central.</p>
         </div>`
       : `<div class="empty">
           <h2>That's the full board today.</h2>
-          <p>New session tomorrow at 8:10am.</p>
+          <p>New session tomorrow at 8:10am Central.</p>
         </div>`;
     document.getElementById("countLabel").textContent = `${cards.length} of ${cards.length}`;
     return;
@@ -650,12 +650,16 @@ function toLocalISO(d) {
   return `${y}-${m}-${day}`;
 }
 
-// The daily refresh runs weekdays at 8:10am local. This computes the most
+// The daily refresh runs weekdays at 8:10am Central. This computes the most
 // recent date fresh cards should exist for, so we can flag stale data
-// instead of silently showing old picks as if they were current.
+// instead of silently showing old picks as if they were current. Must use
+// Central time here, not the visitor's own browser timezone, or this check
+// is wrong for anyone outside Central (a Pacific-time visitor's browser
+// hours are ~2 behind Central, which would misjudge whether today's run
+// has happened yet).
 function mostRecentExpectedBusinessDate() {
   const now = new Date();
-  let d = new Date(now);
+  let d = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
   const beforeRunToday = (d.getHours() < 8) || (d.getHours() === 8 && d.getMinutes() < 15);
   if (beforeRunToday) d.setDate(d.getDate() - 1);
   while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() - 1);

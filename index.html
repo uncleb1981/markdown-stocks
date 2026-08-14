@@ -150,6 +150,22 @@
     flex-direction: column;
     gap: 2px;
   }
+  .ticker-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .new-badge {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(224,168,62,0.14);
+    border: 1px solid rgba(224,168,62,0.35);
+    color: #e0a83e;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
   .ticker-line .ticker {
     font-size: 34px;
     font-weight: 800;
@@ -481,10 +497,13 @@
 
 <script>
 const STORAGE_KEY = "resetcards_saved";
+const STREAK_KEY = "resetcards_streak";
 let cards = [];
 let idx = 0;
 let qualifyingSet = null; // null = not loaded yet, don't show alerts until we have real data
 let ritualPlayed = false; // plays a brief nudge on the top card once per page load, not on every re-render
+let currentStreak = 0;
+let generatedDate = ""; // today's cards.json date, used to flag which cards are new vs carried forward
 
 function loadShortlist() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
@@ -492,6 +511,38 @@ function loadShortlist() {
 }
 function storeShortlist(list) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+function loadStreak() {
+  try { return JSON.parse(localStorage.getItem(STREAK_KEY)) || { count: 0, lastVisit: null }; }
+  catch { return { count: 0, lastVisit: null }; }
+}
+function daysSinceEpoch(dateStr) {
+  return Math.floor(new Date(dateStr + "T12:00:00").getTime() / 86400000);
+}
+// Counts consecutive check-in days, forgiving a Friday-to-Monday gap since
+// there's nothing new to see over the weekend anyway (the site only
+// refreshes on weekdays). Any other gap resets the count to 1.
+function updateStreak() {
+  const streak = loadStreak();
+  const today = toLocalISO(new Date());
+  if (streak.lastVisit === today) return streak.count;
+
+  if (streak.lastVisit) {
+    const gap = daysSinceEpoch(today) - daysSinceEpoch(streak.lastVisit);
+    const todayIsMonday = new Date(today + "T12:00:00").getDay() === 1;
+    const bridgesWeekend = todayIsMonday && gap === 3;
+    streak.count = (gap === 1 || bridgesWeekend) ? streak.count + 1 : 1;
+  } else {
+    streak.count = 1;
+  }
+  streak.lastVisit = today;
+  localStorage.setItem(STREAK_KEY, JSON.stringify(streak));
+  return streak.count;
+}
+function countLabelText(shown, total) {
+  const streakSuffix = currentStreak >= 2 ? ` · 🔥 ${currentStreak} day streak` : "";
+  return `${shown} of ${total}${streakSuffix}`;
 }
 
 function renderStack() {
@@ -510,7 +561,7 @@ function renderStack() {
           <h2>That's the full board today.</h2>
           <p>New session tomorrow at 8:10am Central.</p>
         </div>`;
-    document.getElementById("countLabel").textContent = `${cards.length} of ${cards.length}`;
+    document.getElementById("countLabel").textContent = countLabelText(cards.length, cards.length);
     return;
   }
 
@@ -529,7 +580,10 @@ function renderStack() {
       <div class="stamp skip">PASS</div>
       <div class="ticker-line">
         <div class="ticker-col">
-          <span class="ticker">${c.ticker}</span>
+          <div class="ticker-row">
+            <span class="ticker">${c.ticker}</span>
+            ${c.firstListedDate && c.firstListedDate === generatedDate ? `<span class="new-badge">New</span>` : ""}
+          </div>
           <span class="price">$${c.price}</span>
         </div>
         ${c.resetScore != null ? `<span class="reset-score">Score ${c.resetScore}</span>` : ""}
@@ -553,7 +607,7 @@ function renderStack() {
     if (isTop) attachDrag(el, c);
   });
 
-  document.getElementById("countLabel").textContent = `${idx} of ${cards.length}`;
+  document.getElementById("countLabel").textContent = countLabelText(idx, cards.length);
 }
 
 function attachDrag(el, cardData) {
@@ -696,6 +750,7 @@ fetch("cards.json?_=" + Date.now())
   .then(data => {
     cards = data.cards || [];
     const dateStr = data.generatedDate || "";
+    generatedDate = dateStr;
     const expected = mostRecentExpectedBusinessDate();
     // ISO YYYY-MM-DD strings compare lexicographically = chronologically.
     // Data dated on/after the expected floor is fresh even if not an exact
@@ -728,6 +783,7 @@ fetch("qualifying.json?_=" + Date.now())
   });
 
 renderShortlist();
+currentStreak = updateStreak();
 </script>
 </body>
 </html>

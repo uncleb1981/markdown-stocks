@@ -72,6 +72,13 @@
     letter-spacing: -0.01em;
     margin-top: 10px;
   }
+  header .tagline-why {
+    color: var(--muted);
+    font-size: 15.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: 4px;
+  }
   header .sub {
     color: var(--muted);
     font-size: 14.5px;
@@ -385,12 +392,23 @@
   }
 
   .empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: var(--muted);
-    padding: 30px 10px;
+    padding: 30px 26px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px -8px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.04) inset;
   }
-  .empty h2 { color: var(--text); font-size: 18px; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; }
-  .empty p { font-size: 14.5px; line-height: 1.5; margin: 0; }
+  .empty h2 { color: var(--text); font-size: 20px; margin: 0 0 8px; font-weight: 700; letter-spacing: -0.01em; }
+  .empty p { font-size: 15px; line-height: 1.5; margin: 0; max-width: 320px; }
+  .empty .next-update { color: var(--green); font-weight: 700; }
 
   .faq {
     max-width: 440px;
@@ -425,7 +443,8 @@
 <div class="layout">
   <header>
     <h1>Clearing the Decks</h1>
-    <div class="tagline">We find deliberate resets, built for upside.</div>
+    <div class="tagline">Find companies that take a hit on purpose.</div>
+    <div class="tagline-why">To fuel next year's turnaround story.</div>
     <div class="sub" id="subLabel">Loading…</div>
     <div class="disclaimer">Informational only. Not investment advice.</div>
   </header>
@@ -555,11 +574,11 @@ function renderStack() {
     stack.innerHTML = cards.length === 0
       ? `<div class="empty">
           <h2>No names cleared the checklist today.</h2>
-          <p>That happens. The bar is intentionally high. New session tomorrow at 8:10am Central.</p>
+          <p>That happens, the bar is intentionally high. Fresh picks drop every trading day at <span class="next-update">8:10am Central</span>.</p>
         </div>`
       : `<div class="empty">
           <h2>That's everyone for today.</h2>
-          <p>New session tomorrow at 8:10am Central.</p>
+          <p>Fresh picks drop every trading day at <span class="next-update">8:10am Central</span>. Come back tomorrow to see who's next, and check on the names in your shortlist.</p>
         </div>`;
     document.getElementById("countLabel").textContent = countLabelText(cards.length, cards.length);
     return;

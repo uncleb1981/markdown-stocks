@@ -39,8 +39,8 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "header"
-      "shortlist"
-      "main";
+      "main"
+      "shortlist";
     max-width: 440px;
     margin: 0 auto;
     padding: 0 20px;
@@ -368,12 +368,6 @@
   }
 
   @media (min-width: 860px) {
-    .layout {
-      grid-template-areas:
-        "header"
-        "main"
-        "shortlist";
-    }
     .shortlist-panel { padding: 24px 0 0; }
     .shortlist-list {
       flex-direction: column;

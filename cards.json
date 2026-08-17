@@ -20,22 +20,6 @@
       "listedPrice": 49.88
     },
     {
-      "ticker": "PLTK",
-      "name": "Playtika",
-      "price": 2.54,
-      "pe": null,
-      "pct1mo": -38.8,
-      "why": "Develops and operates mobile games. CFO Craig Abrahams is departing (an acting CFO steps in) right on top of a quarter that missed estimates by 30% amid a $206M annual loss, a leadership shakeup landing on the worst print in a while, with shares down 39%.",
-      "nextEarnings": "Nov 5",
-      "rsi": 29,
-      "resetScore": 54,
-      "scoreChange": -1,
-      "shockScore": 30,
-      "leadershipConfirmed": true,
-      "firstListedDate": "2026-08-12",
-      "listedPrice": 2.44
-    },
-    {
       "ticker": "HUT",
       "name": "Hut 8 Corp",
       "price": 86.19,

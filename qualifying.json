@@ -1,17 +1,17 @@
 {
-  "generatedDate": "2026-08-14",
+  "generatedDate": "2026-08-17",
   "tickers": [
     {
       "ticker": "NYAX",
       "name": "Nayax",
-      "rsi": 33,
+      "rsi": 30,
       "pct1mo": -26.9,
       "resetScore": 69
     },
     {
       "ticker": "HUT",
       "name": "Hut 8 Corp",
-      "rsi": 39,
+      "rsi": 41,
       "pct1mo": -22.1,
       "resetScore": 61
     },
@@ -25,7 +25,7 @@
     {
       "ticker": "ATS",
       "name": "ATS Corporation",
-      "rsi": 26,
+      "rsi": 28,
       "pct1mo": -25.3,
       "resetScore": 40
     },
@@ -39,7 +39,7 @@
     {
       "ticker": "TTD",
       "name": "Trade Desk",
-      "rsi": 36,
+      "rsi": 34,
       "pct1mo": -25.4,
       "resetScore": 37
     }

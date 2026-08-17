@@ -183,6 +183,12 @@
     color: var(--muted);
     font-weight: 600;
   }
+  .score-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
   .reset-score {
     font-size: 19px;
     font-weight: 800;
@@ -193,6 +199,12 @@
     color: var(--green);
     white-space: nowrap;
   }
+  .score-change {
+    font-size: 11.5px;
+    font-weight: 800;
+  }
+  .score-change.up { color: var(--green); }
+  .score-change.down { color: var(--red); }
   .name {
     color: var(--muted);
     font-size: 16px;
@@ -489,7 +501,7 @@
   </div>
   <div class="faq-item">
     <div class="q">Why is the same name still here from a few days ago?</div>
-    <div class="a">Once a name clears the checklist, it stays on the list with its original writeup and score. It doesn't get reassessed from scratch every morning. It only comes off if the price has moved 15% or more from where it was first flagged, in either direction: that big a move means the original case has already played out (up) or changed enough to need fresh eyes (down). The price and RSI shown still update daily either way, so you can watch it move toward or away from that threshold.</div>
+    <div class="a">Once a name clears the checklist, it stays on the list with its original writeup. It doesn't get reassessed from scratch every morning. It only comes off if the price has moved 15% or more from where it was first flagged, in either direction: that big a move means the original case has already played out (up) or changed enough to need fresh eyes (down). The price, RSI, and Reset Score do update daily though, the score reflects where things stand today against the original reason it was flagged, and the small number next to it shows how much it moved since yesterday.</div>
   </div>
   <div class="faq-item">
     <div class="q">Where does the data come from?</div>
@@ -600,7 +612,11 @@ function renderStack() {
           </div>
           <span class="price">$${c.price}</span>
         </div>
-        ${c.resetScore != null ? `<span class="reset-score">Score ${c.resetScore}</span>` : ""}
+        ${c.resetScore != null ? `
+        <div class="score-col">
+          <span class="reset-score">Score ${c.resetScore}</span>
+          ${c.scoreChange ? `<span class="score-change ${c.scoreChange > 0 ? 'up' : 'down'}">${c.scoreChange > 0 ? '+' : ''}${c.scoreChange}</span>` : ""}
+        </div>` : ""}
       </div>
       <div class="name">${c.name}</div>
       <div class="stat-line">

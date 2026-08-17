@@ -9,18 +9,25 @@
       "resetScore": 69
     },
     {
-      "ticker": "HUT",
-      "name": "Hut 8 Corp",
-      "rsi": 41,
-      "pct1mo": -22.1,
-      "resetScore": 61
-    },
-    {
       "ticker": "PLTK",
       "name": "Playtika",
       "rsi": 29,
       "pct1mo": -38.8,
-      "resetScore": 55
+      "resetScore": 54
+    },
+    {
+      "ticker": "HUT",
+      "name": "Hut 8 Corp",
+      "rsi": 41,
+      "pct1mo": -22.1,
+      "resetScore": 50
+    },
+    {
+      "ticker": "BLLN",
+      "name": "BillionToOne",
+      "rsi": 35,
+      "pct1mo": -29.7,
+      "resetScore": 41
     },
     {
       "ticker": "ATS",
@@ -30,18 +37,11 @@
       "resetScore": 40
     },
     {
-      "ticker": "BLLN",
-      "name": "BillionToOne",
-      "rsi": 35,
-      "pct1mo": -29.7,
-      "resetScore": 39
-    },
-    {
       "ticker": "TTD",
       "name": "Trade Desk",
       "rsi": 34,
       "pct1mo": -25.4,
-      "resetScore": 37
+      "resetScore": 33
     }
   ]
 }

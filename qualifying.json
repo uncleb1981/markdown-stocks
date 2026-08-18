@@ -1,5 +1,5 @@
 {
-  "generatedDate": "2026-08-17",
+  "generatedDate": "2026-08-18",
   "tickers": [
     {
       "ticker": "NYAX",
@@ -14,6 +14,13 @@
       "rsi": 41,
       "pctSinceReport": -21.4,
       "resetScore": 60
+    },
+    {
+      "ticker": "VPG",
+      "name": "Vishay Precision Group",
+      "rsi": 42,
+      "pctSinceReport": -24.5,
+      "resetScore": 52
     },
     {
       "ticker": "BLLN",

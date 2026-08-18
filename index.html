@@ -783,9 +783,10 @@ fetch("cards.json?_=" + Date.now())
     // match (e.g. a manual refresh run ahead of the scheduled time).
     const isStale = dateStr && dateStr < expected;
     const subEl = document.getElementById("subLabel");
+    const timeStr = data.generatedTime || "8:10am Central";
     subEl.textContent = isStale
       ? `${cards.length} picks · Updated ${dateStr} (today's refresh hasn't run yet)`
-      : `${cards.length} picks · Updated ${dateStr} at 8:10am Central`;
+      : `${cards.length} picks · Updated ${dateStr} at ${timeStr}`;
     subEl.classList.toggle("stale", isStale);
     renderStack();
   })

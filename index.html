@@ -616,7 +616,7 @@ function renderStack() {
       </div>
       <div class="name">${c.name}</div>
       <div class="stat-line">
-        <span class="down">${c.pct1mo.toFixed(1)}% past month</span>${c.revenueYoyPct != null ? `<span class="sep">·</span><span class="rev-growth">Revenue ${c.revenueYoyPct > 0 ? '+' : ''}${c.revenueYoyPct}% YoY</span>` : ""}
+        <span class="down">${c.pctSinceReport.toFixed(1)}% since report</span>${c.revenueYoyPct != null ? `<span class="sep">·</span><span class="rev-growth">Revenue ${c.revenueYoyPct > 0 ? '+' : ''}${c.revenueYoyPct}% YoY</span>` : ""}
       </div>
       <div class="why">${c.why}</div>
       ${c.nextEarnings || c.rsi != null ? `

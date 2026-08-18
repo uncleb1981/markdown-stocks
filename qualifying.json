@@ -5,35 +5,35 @@
       "ticker": "NYAX",
       "name": "Nayax",
       "rsi": 30,
-      "pct1mo": -26.9,
-      "resetScore": 69
+      "pctSinceReport": -30.5,
+      "resetScore": 71
     },
     {
       "ticker": "HUT",
       "name": "Hut 8 Corp",
       "rsi": 41,
-      "pct1mo": -22.1,
-      "resetScore": 50
+      "pctSinceReport": -21.4,
+      "resetScore": 60
     },
     {
       "ticker": "BLLN",
       "name": "BillionToOne",
       "rsi": 35,
-      "pct1mo": -29.7,
-      "resetScore": 41
+      "pctSinceReport": -37.4,
+      "resetScore": 45
     },
     {
       "ticker": "ATS",
       "name": "ATS Corporation",
       "rsi": 28,
-      "pct1mo": -25.3,
-      "resetScore": 40
+      "pctSinceReport": -29.9,
+      "resetScore": 43
     },
     {
       "ticker": "TTD",
       "name": "Trade Desk",
       "rsi": 34,
-      "pct1mo": -25.4,
+      "pctSinceReport": -24.2,
       "resetScore": 33
     }
   ]

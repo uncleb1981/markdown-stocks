@@ -76,6 +76,24 @@
       "listedPrice": 20.35
     },
     {
+      "ticker": "TNC",
+      "name": "Tennant Company",
+      "price": 67.57,
+      "revenueYoyPct": null,
+      "pctSinceReport": -22.6,
+      "reportDate": "2026-08-05",
+      "preEarningsClose": 87.25,
+      "why": "Makes industrial cleaning equipment for maintaining floors and surfaces in commercial and industrial spaces. The latest quarter missed estimates by 37%, one of the sharper misses in this group, with shares down 23% since. No leadership change surfaced in our research; this looks like an operational reset standing on its own.",
+      "nextEarnings": "Nov 2",
+      "rsi": 31,
+      "resetScore": 37,
+      "scoreChange": 0,
+      "shockScore": 36.6,
+      "leadershipConfirmed": false,
+      "firstListedDate": "2026-08-17",
+      "listedPrice": 67.57
+    },
+    {
       "ticker": "TTD",
       "name": "Trade Desk",
       "price": 13.40,

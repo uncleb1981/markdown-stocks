@@ -30,6 +30,13 @@
       "resetScore": 43
     },
     {
+      "ticker": "TNC",
+      "name": "Tennant Company",
+      "rsi": 31,
+      "pctSinceReport": -22.6,
+      "resetScore": 37
+    },
+    {
       "ticker": "TTD",
       "name": "Trade Desk",
       "rsi": 34,

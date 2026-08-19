@@ -7,7 +7,7 @@
     "excludedOtherReasons": 18,
     "cardsToReview": 7
   },
-  "criteria": "Down 20%+ since the flagged earnings report, market cap over $1B, RSI under 45, a real recent earnings miss (or swing to a loss), gross margin still positive and revenue not collapsing (down under 25% YoY, not declining 3+ of the last 4 quarters), excludes banks, pharma, and biotech. Ranked by Reset Score (0 to 100), recomputed daily from live price/RSI against the original earnings shock and leadership finding: earnings shock size, price drop severity, RSI, a confirmed recent leadership change as a bonus signal, and how well the underlying financial health is actually verified. Cards persist day to day once listed and only drop off if the price moves 15%+ from where it was first flagged.",
+  "criteria": "Down 20%+ since the flagged earnings report, market cap over $1B, RSI under 45, a real recent earnings miss (or swing to a loss), gross margin still positive and revenue not collapsing (down under 25% YoY, not declining 3+ of the last 4 quarters), excludes banks, pharma, and biotech. Ranked by Reset Score (0 to 100), recomputed daily from live price/RSI against the original earnings shock and leadership finding: earnings shock size, price drop severity, RSI, a confirmed recent leadership change as a bonus signal, and how well the underlying financial health is actually verified. Cards persist day to day once listed and only drop off once the price has moved far enough from where it was first flagged.",
   "disclaimer": "Informational screener only, not investment advice. Data from live market feed. Not a recommendation to buy or sell any security.",
   "cards": [
     {

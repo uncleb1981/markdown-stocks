@@ -320,21 +320,6 @@
   .checkpoint-row .label { color: var(--muted-2); font-weight: 600; }
   .checkpoint-row .value { color: var(--muted); font-weight: 600; text-align: right; }
 
-  .swipe-hint {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 14px;
-    margin-top: auto;
-    border-top: 1px solid var(--border);
-    font-size: 13.5px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    flex-shrink: 0;
-  }
-  .swipe-hint .hint-skip { color: var(--red); }
-  .swipe-hint .hint-keep { color: var(--green); }
-
   .stamp {
     position: absolute;
     top: 50%;
@@ -812,10 +797,6 @@ function renderStack() {
         ${c.nextEarnings ? `<div class="checkpoint-row"><span class="label">Next earnings</span><span class="value">${c.nextEarnings}</span></div>` : ""}
         ${c.rsi != null ? `<div class="checkpoint-row"><span class="label">Resets when</span><span class="value">RSI clears 45 (now ${c.rsi})</span></div>` : ""}
       </div>` : ""}
-      <div class="swipe-hint">
-        <span class="hint-skip">← Pass</span>
-        <span class="hint-keep">Keep →</span>
-      </div>
     `;
     stack.appendChild(el);
     if (isTop) attachDrag(el, c);

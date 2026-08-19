@@ -87,6 +87,69 @@
     margin-top: 6px;
   }
 
+  .summary-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+  }
+  .summary-overlay.hidden { display: none; }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    max-width: 380px;
+    width: 100%;
+    padding: 22px 20px;
+    text-align: left;
+  }
+  .summary-card h2 {
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .summary-card .summary-date {
+    color: var(--muted);
+    font-size: 13.5px;
+    margin: 0 0 16px;
+  }
+  .summary-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .summary-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 14.5px;
+    color: var(--text);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .summary-stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .summary-stat .summary-num {
+    font-weight: 800;
+    font-size: 17px;
+  }
+  .summary-close {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: var(--green);
+    color: #0a0a0b;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
   .swipe-legend {
     display: flex;
     justify-content: center;
@@ -443,6 +506,18 @@
 </style>
 </head>
 <body>
+<div class="summary-overlay hidden" id="summaryOverlay">
+  <div class="summary-card">
+    <h2>Refresh summary</h2>
+    <div class="summary-date" id="summaryDate"></div>
+    <div class="summary-stats">
+      <div class="summary-stat"><span>Stocks scanned</span><span class="summary-num" id="summaryScanned">–</span></div>
+      <div class="summary-stat"><span>Excluded for financial health</span><span class="summary-num" id="summaryExcluded">–</span></div>
+      <div class="summary-stat"><span>Cards ready to review</span><span class="summary-num" id="summaryRemaining">–</span></div>
+    </div>
+    <button class="summary-close" id="summaryCloseBtn">Got it</button>
+  </div>
+</div>
 <div class="layout">
   <header>
     <h1>Clearing the Decks</h1>
@@ -519,6 +594,7 @@
 <script>
 const STORAGE_KEY = "resetcards_saved";
 const STREAK_KEY = "resetcards_streak";
+const SUMMARY_SEEN_KEY = "resetcards_summary_seen";
 let cards = [];
 let idx = 0;
 let qualifyingSet = null; // null = not loaded yet, don't show alerts until we have real data
@@ -771,6 +847,30 @@ function mostRecentExpectedBusinessDate() {
   return toLocalISO(d);
 }
 
+const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+function formatSummaryDate(dateStr) {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return `${MONTH_NAMES[m - 1]} ${d}`;
+}
+
+function showSummaryIfNeeded(data, dateStr, isStale) {
+  const summary = data.scanSummary;
+  if (!summary || isStale) return;
+  let seenDate = "";
+  try { seenDate = localStorage.getItem(SUMMARY_SEEN_KEY) || ""; } catch (e) {}
+  if (seenDate === dateStr) return;
+  document.getElementById("summaryDate").textContent = formatSummaryDate(dateStr);
+  document.getElementById("summaryScanned").textContent = summary.totalScanned;
+  document.getElementById("summaryExcluded").textContent = summary.excludedFinancialHealth;
+  document.getElementById("summaryRemaining").textContent = summary.cardsToReview;
+  const overlay = document.getElementById("summaryOverlay");
+  overlay.classList.remove("hidden");
+  document.getElementById("summaryCloseBtn").onclick = () => {
+    overlay.classList.add("hidden");
+    try { localStorage.setItem(SUMMARY_SEEN_KEY, dateStr); } catch (e) {}
+  };
+}
+
 fetch("cards.json?_=" + Date.now())
   .then(r => r.json())
   .then(data => {
@@ -789,6 +889,7 @@ fetch("cards.json?_=" + Date.now())
       : `${cards.length} picks · Updated ${dateStr} at ${timeStr}`;
     subEl.classList.toggle("stale", isStale);
     renderStack();
+    showSummaryIfNeeded(data, dateStr, isStale);
   })
   .catch(() => {
     document.getElementById("subLabel").textContent = "Couldn't load today's picks";

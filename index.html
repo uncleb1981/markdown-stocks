@@ -488,6 +488,60 @@
   .empty p { font-size: 15px; line-height: 1.5; margin: 0; max-width: 320px; }
   .empty .next-update { color: var(--green); font-weight: 700; }
 
+  .signup {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .signup h2 {
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .signup-sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 16px;
+  }
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    text-align: left;
+  }
+  .signup-form input[type="email"] {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 15px;
+  }
+  .signup-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .signup-check input { margin-top: 3px; }
+  .signup-submit {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: var(--green);
+    color: #0a0a0b;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+
   .faq {
     max-width: 440px;
     margin: 0 auto;
@@ -569,6 +623,24 @@
   </div>
 </div>
 
+<section class="signup">
+  <h2>Get notified</h2>
+  <p class="signup-sub">No account needed, just an email. Pick one or both.</p>
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/ClearingtheDecks"
+    method="post"
+    target="popupwindow"
+    onsubmit="return prepSignupTags(this)"
+    class="signup-form"
+  >
+    <input type="hidden" name="embed" value="1" />
+    <input type="email" name="email" id="signupEmail" placeholder="you@example.com" required />
+    <label class="signup-check"><input type="checkbox" id="tagRetirement" checked /> Tell me when a card retires (hits its 15% move)</label>
+    <label class="signup-check"><input type="checkbox" id="tagNewsletter" /> Send me the newsletter (occasional recaps)</label>
+    <button type="submit" class="signup-submit">Subscribe</button>
+  </form>
+</section>
+
 <section class="faq">
   <h2>FAQ</h2>
   <div class="faq-item">
@@ -609,6 +681,29 @@
 const STORAGE_KEY = "resetcards_saved";
 const STREAK_KEY = "resetcards_streak";
 const SUMMARY_SEEN_KEY = "resetcards_summary_seen";
+
+function prepSignupTags(form) {
+  const wantRetirement = document.getElementById("tagRetirement").checked;
+  const wantNewsletter = document.getElementById("tagNewsletter").checked;
+  if (!wantRetirement && !wantNewsletter) {
+    alert("Pick at least one option below the email field.");
+    return false;
+  }
+  form.querySelectorAll("input[name='tag']").forEach(el => el.remove());
+  if (wantRetirement) {
+    const t = document.createElement("input");
+    t.type = "hidden"; t.name = "tag"; t.value = "retirement_alerts";
+    form.appendChild(t);
+  }
+  if (wantNewsletter) {
+    const t = document.createElement("input");
+    t.type = "hidden"; t.name = "tag"; t.value = "newsletter";
+    form.appendChild(t);
+  }
+  window.open("https://buttondown.com/api/emails/embed-subscribe/ClearingtheDecks", "popupwindow");
+  return true;
+}
+
 let cards = [];
 let idx = 0;
 let qualifyingSet = null; // null = not loaded yet, don't show alerts until we have real data

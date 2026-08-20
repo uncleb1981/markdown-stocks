@@ -157,6 +157,12 @@
     margin-top: 2px;
   }
   .summary-stat.summary-total .summary-num { color: var(--green); font-size: 19px; }
+  .summary-note {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--muted-2);
+    margin: -2px 0 10px;
+  }
   .summary-close {
     width: 100%;
     padding: 12px;
@@ -572,6 +578,7 @@
       <div class="summary-stat"><span>Stocks meeting reset criteria</span><span class="summary-num" id="summaryScanned">–</span></div>
       <div class="summary-stat"><span><span class="summary-op">−</span>Excluded for financial health</span><span class="summary-num" id="summaryExcludedHealth">–</span></div>
       <div class="summary-stat"><span><span class="summary-op">−</span>Excluded for other reasons</span><span class="summary-num" id="summaryExcludedOther">–</span></div>
+      <div class="summary-note">Mostly names that beat or met estimates (not a real miss), plus a handful excluded by sector (banks, pharma) or lacking enough trading history to judge.</div>
       <div class="summary-stat summary-total"><span><span class="summary-op">=</span>Cards ready to review</span><span class="summary-num" id="summaryRemaining">–</span></div>
     </div>
     <button class="summary-close" id="summaryCloseBtn">Got it</button>

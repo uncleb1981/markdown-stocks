@@ -2,12 +2,12 @@
   "generatedDate": "2026-08-20",
   "generatedTime": "7:50am Central",
   "scanSummary": {
-    "totalScanned": 32,
+    "totalScanned": 33,
     "excludedFinancialHealth": 3,
     "excludedOtherReasons": 23,
-    "cardsToReview": 6
+    "cardsToReview": 7
   },
-  "criteria": "Down 20%+ since the flagged earnings report, market cap over $1B, RSI under 45, a real recent earnings miss (or swing to a loss), gross margin still positive and revenue not collapsing (down under 25% YoY, not declining 3+ of the last 4 quarters), excludes banks, pharma, and biotech. Ranked by Reset Score (0 to 100), recomputed daily from live price/RSI against the original earnings shock and leadership finding: earnings shock size, price drop severity, RSI, a confirmed recent leadership change as a bonus signal, and how well the underlying financial health is actually verified. Cards persist day to day once listed and only drop off once the price has moved far enough from where it was first flagged.",
+  "criteria": "Down 20%+ since the flagged earnings report, market cap over $1B, RSI under 45, a real recent earnings miss (or swing to a loss), gross margin still positive and revenue not collapsing (down under 25% YoY, not declining 3+ of the last 4 quarters), excludes banks, pharma, and biotech. Ranked by Reset Score (0 to 100), recomputed daily from live price/RSI against the original earnings shock and leadership finding: earnings shock size, price drop severity, RSI, a confirmed recent leadership change as a bonus signal, and how well the underlying financial health is actually verified. Cards persist day to day once listed and only drop off once the reset has clearly played out or a genuine new health concern is confirmed, never just for the price falling further.",
   "disclaimer": "Informational screener only, not investment advice. Data from live market feed. Not a recommendation to buy or sell any security.",
   "cards": [
     {
@@ -45,6 +45,24 @@
       "leadershipConfirmed": false,
       "firstListedDate": "2026-08-14",
       "listedPrice": 83.80
+    },
+    {
+      "ticker": "VPG",
+      "name": "Vishay Precision Group",
+      "price": 63.13,
+      "revenueYoyPct": 12,
+      "pctSinceReport": -24.5,
+      "reportDate": "2026-08-05",
+      "preEarningsClose": 101.00,
+      "why": "Makes precision measurement and sensing technology components for industrial and test markets. The latest quarter missed estimates by 79%, one of the sharpest misses in this group, with shares down 25% since. No leadership change surfaced in our research; this looks like an operational reset on its own, while revenue has kept growing.",
+      "nextEarnings": "Nov 3",
+      "rsi": 35,
+      "resetScore": 69,
+      "scoreChange": 3,
+      "shockScore": 78.9,
+      "leadershipConfirmed": false,
+      "firstListedDate": "2026-08-18",
+      "listedPrice": 76.23
     },
     {
       "ticker": "BLLN",

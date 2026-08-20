@@ -16,6 +16,13 @@
       "resetScore": 70
     },
     {
+      "ticker": "VPG",
+      "name": "Vishay Precision Group",
+      "rsi": 35,
+      "pctSinceReport": -24.5,
+      "resetScore": 69
+    },
+    {
       "ticker": "BLLN",
       "name": "BillionToOne",
       "rsi": 36,

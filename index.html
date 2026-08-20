@@ -576,9 +576,8 @@
     <div class="summary-date" id="summaryDate"></div>
     <div class="summary-stats">
       <div class="summary-stat"><span>Stocks meeting reset criteria</span><span class="summary-num" id="summaryScanned">–</span></div>
-      <div class="summary-stat"><span><span class="summary-op">−</span>Excluded for financial health</span><span class="summary-num" id="summaryExcludedHealth">–</span></div>
-      <div class="summary-stat"><span><span class="summary-op">−</span>Excluded for other reasons</span><span class="summary-num" id="summaryExcludedOther">–</span></div>
-      <div class="summary-note">Mostly names that beat or met estimates (not a real miss), plus a handful excluded by sector (banks, pharma) or lacking enough trading history to judge.</div>
+      <div class="summary-stat"><span><span class="summary-op">−</span>Excluded</span><span class="summary-num" id="summaryExcluded">–</span></div>
+      <div class="summary-note">A mix of failed financial-health checks (weak margins, declining revenue) and names that beat or met estimates, wrong sector, or lacked enough trading history to judge.</div>
       <div class="summary-stat summary-total"><span><span class="summary-op">=</span>Cards ready to review</span><span class="summary-num" id="summaryRemaining">–</span></div>
     </div>
     <button class="summary-close" id="summaryCloseBtn">Got it</button>
@@ -961,8 +960,7 @@ function showSummaryIfNeeded(data, dateStr, isStale) {
   if (seenDate === dateStr) return;
   document.getElementById("summaryDate").textContent = formatSummaryDate(dateStr);
   document.getElementById("summaryScanned").textContent = summary.totalScanned;
-  document.getElementById("summaryExcludedHealth").textContent = summary.excludedFinancialHealth;
-  document.getElementById("summaryExcludedOther").textContent = summary.excludedOtherReasons;
+  document.getElementById("summaryExcluded").textContent = summary.excludedFinancialHealth + summary.excludedOtherReasons;
   document.getElementById("summaryRemaining").textContent = summary.cardsToReview;
   const overlay = document.getElementById("summaryOverlay");
   overlay.classList.remove("hidden");

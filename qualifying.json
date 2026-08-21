@@ -1,47 +1,47 @@
 {
-  "generatedDate": "2026-08-20",
+  "generatedDate": "2026-08-21",
   "tickers": [
     {
       "ticker": "NYAX",
       "name": "Nayax",
       "rsi": 30,
       "pctSinceReport": -30.5,
-      "resetScore": 75
-    },
-    {
-      "ticker": "HUT",
-      "name": "Hut 8 Corp",
-      "rsi": 40,
-      "pctSinceReport": -21.4,
-      "resetScore": 70
+      "resetScore": 76
     },
     {
       "ticker": "VPG",
       "name": "Vishay Precision Group",
-      "rsi": 35,
+      "rsi": 34,
       "pctSinceReport": -24.5,
       "resetScore": 69
     },
     {
+      "ticker": "HUT",
+      "name": "Hut 8 Corp",
+      "rsi": 46,
+      "pctSinceReport": -21.4,
+      "resetScore": 65
+    },
+    {
       "ticker": "BLLN",
       "name": "BillionToOne",
-      "rsi": 36,
+      "rsi": 39,
       "pctSinceReport": -37.4,
-      "resetScore": 52
+      "resetScore": 50
     },
     {
       "ticker": "TTD",
       "name": "Trade Desk",
-      "rsi": 33,
+      "rsi": 32,
       "pctSinceReport": -24.2,
-      "resetScore": 44
+      "resetScore": 45
     },
     {
       "ticker": "ATS",
       "name": "ATS Corporation",
-      "rsi": 29,
+      "rsi": 27,
       "pctSinceReport": -29.9,
-      "resetScore": 43
+      "resetScore": 44
     },
     {
       "ticker": "TNC",

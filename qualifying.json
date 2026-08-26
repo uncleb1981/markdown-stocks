@@ -2,13 +2,6 @@
   "generatedDate": "2026-08-26",
   "tickers": [
     {
-      "ticker": "FLNC",
-      "name": "Fluence Energy",
-      "rsi": 35,
-      "pctSinceReport": -21.0,
-      "resetScore": 79
-    },
-    {
       "ticker": "STUB",
       "name": "StubHub",
       "rsi": 32,

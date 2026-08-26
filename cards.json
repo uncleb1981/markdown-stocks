@@ -3,31 +3,13 @@
   "generatedTime": "8:18am Central",
   "scanSummary": {
     "totalScanned": 50,
-    "excludedFinancialHealth": 4,
+    "excludedFinancialHealth": 5,
     "excludedOtherReasons": 35,
-    "cardsToReview": 11
+    "cardsToReview": 10
   },
   "criteria": "Down 20%+ since the flagged earnings report, market cap over $1B, RSI under 45, a real recent earnings miss (or swing to a loss), gross margin still positive and revenue not collapsing (down under 25% YoY, not declining 3+ of the last 4 quarters), excludes banks, pharma, and biotech. Ranked by Reset Score (0 to 100), recomputed daily from live price/RSI against the original earnings shock and leadership finding: earnings shock size, price drop severity, RSI, a confirmed recent leadership change as a bonus signal, and how well the underlying financial health is actually verified. Cards persist day to day once listed and only drop off once the reset has clearly played out or a genuine new health concern is confirmed, never just for the price falling further.",
   "disclaimer": "Informational screener only, not investment advice. Data from live market feed. Not a recommendation to buy or sell any security.",
   "cards": [
-    {
-      "ticker": "FLNC",
-      "name": "Fluence Energy",
-      "price": 11.24,
-      "revenueYoyPct": 8,
-      "pctSinceReport": -21.0,
-      "reportDate": "2026-08-05",
-      "preEarningsClose": 14.23,
-      "why": "Makes energy storage systems and software for the power grid. New CFO Osvaldo Llanes joined in December 2025, and the latest quarter swung to a much deeper loss than expected, one of the sharpest misses in this group, with shares down 21% since, while revenue has kept growing.",
-      "nextEarnings": "Nov 23",
-      "rsi": 35,
-      "resetScore": 79,
-      "scoreChange": 0,
-      "shockScore": 100,
-      "leadershipConfirmed": true,
-      "firstListedDate": "2026-08-26",
-      "listedPrice": 11.24
-    },
     {
       "ticker": "STUB",
       "name": "StubHub",

@@ -327,6 +327,7 @@
   .checkpoint-row .value { color: var(--muted); font-weight: 600; text-align: right; }
   .checkpoint-row .value.up { color: var(--green); }
   .checkpoint-row .value.down { color: var(--red); }
+  .checkpoint-row .value .value-sub { color: var(--muted-2); font-weight: 600; }
 
   .stamp {
     position: absolute;
@@ -803,7 +804,7 @@ function renderStack() {
       <div class="why">${c.why}</div>
       ${c.nextEarnings || c.rsi != null || sinceListedPct != null ? `
       <div class="checkpoint">
-        ${sinceListedPct != null ? `<div class="checkpoint-row"><span class="label">Since listed</span><span class="value ${sinceListedPct >= 0 ? 'up' : 'down'}">${sinceListedPct >= 0 ? '+' : ''}${sinceListedPct.toFixed(1)}%</span></div>` : ""}
+        ${sinceListedPct != null ? `<div class="checkpoint-row"><span class="label">Since listed</span><span class="value ${sinceListedPct >= 0 ? 'up' : 'down'}">${sinceListedPct >= 0 ? '+' : ''}${sinceListedPct.toFixed(1)}%${c.firstListedDate ? ` <span class="value-sub">(${formatShortDate(c.firstListedDate)})</span>` : ""}</span></div>` : ""}
         ${c.nextEarnings ? `<div class="checkpoint-row"><span class="label">Next earnings</span><span class="value">${c.nextEarnings}</span></div>` : ""}
         ${c.rsi != null ? `<div class="checkpoint-row"><span class="label">Resets when</span><span class="value">RSI clears 45 (now ${c.rsi})</span></div>` : ""}
       </div>` : ""}
@@ -954,6 +955,11 @@ const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "Ju
 function formatSummaryDate(dateStr) {
   const [y, m, d] = dateStr.split("-").map(Number);
   return `${MONTH_NAMES[m - 1]} ${d}`;
+}
+const MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function formatShortDate(dateStr) {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return `${MONTH_ABBR[m - 1]} ${d}`;
 }
 
 function showSummaryIfNeeded(data, dateStr, isStale) {

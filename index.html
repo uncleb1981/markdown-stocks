@@ -654,7 +654,7 @@
   </div>
   <div class="faq-item">
     <div class="q">How long should I hold one of these?</div>
-    <div class="a">There's no set hold date. We keep watching the same signals that flagged it in the first place, the next earnings report and whether it still looks oversold, and a card comes off the list once that signal fades, not on a calendar. If you don't want to keep checking back yourself, sign up above for an automated email the moment a stock is removed from our screener.</div>
+    <div class="a">There's no set hold date. We keep watching the same signals that flagged it in the first place, the next earnings report and whether the price has recovered, and a card comes off the list once that signal fades, not on a calendar. If you don't want to keep checking back yourself, sign up above for an automated email the moment a stock is removed from our screener.</div>
   </div>
   <div class="faq-item">
     <div class="q">What does this actually check?</div>
@@ -662,7 +662,7 @@
   </div>
   <div class="faq-item">
     <div class="q">What is the Reset Score?</div>
-    <div class="a">A single 0 to 100 number that blends how dramatic and recent the reset looks with how well the underlying business health is actually confirmed: the size of the miss, how hard the stock fell, how oversold it is, whether revenue growth is verified or just unconfirmed, and a bonus if a genuine, recently confirmed leadership change lines up with the timing. The leadership part is best effort, pulled from a web search rather than a data feed, and a card says so plainly when nothing turned up. It also recomputes every day as price and RSI move, so a card can show a different score today than yesterday even though nothing about the original miss changed, that's not a re-review, just the same formula running on fresh numbers. The small number underneath the score shows how much it moved since yesterday.</div>
+    <div class="a">A single 0 to 100 number that blends how dramatic and recent the reset looks with how well the underlying business health is actually confirmed: the size of the miss, how hard the stock fell, whether revenue growth is verified or just unconfirmed, and a bonus if a genuine, recently confirmed leadership change lines up with the timing. The leadership part is best effort, pulled from a web search rather than a data feed, and a card says so plainly when nothing turned up. It also recomputes every day as price moves, so a card can show a different score today than yesterday even though nothing about the original miss changed, that's not a re-review, just the same formula running on fresh numbers. The small number underneath the score shows how much it moved since yesterday.</div>
   </div>
   <div class="faq-item">
     <div class="q">Where does the data come from?</div>
@@ -806,11 +806,10 @@ function renderStack() {
         <span class="down">${c.pctSinceReport.toFixed(1)}% since report</span>${c.revenueYoyPct != null ? `<span class="sep">·</span><span class="rev-growth">Revenue ${c.revenueYoyPct > 0 ? '+' : ''}${c.revenueYoyPct}% YoY</span>` : ""}
       </div>
       <div class="why">${c.why}</div>
-      ${c.nextEarnings || c.rsi != null || sinceListedPct != null ? `
+      ${c.nextEarnings || sinceListedPct != null ? `
       <div class="checkpoint">
         ${sinceListedPct != null ? `<div class="checkpoint-row"><span class="label">Since listed</span><span class="value ${sinceListedPct >= 0 ? 'up' : 'down'}">${sinceListedPct >= 0 ? '+' : ''}${sinceListedPct.toFixed(1)}%${c.firstListedDate ? ` <span class="value-sub">(${formatShortDate(c.firstListedDate)})</span>` : ""}</span></div>` : ""}
         ${c.nextEarnings ? `<div class="checkpoint-row"><span class="label">Next earnings</span><span class="value">${c.nextEarnings}</span></div>` : ""}
-        ${c.rsi != null ? `<div class="checkpoint-row"><span class="label">Resets when</span><span class="value">RSI clears 45 (now ${c.rsi})</span></div>` : ""}
       </div>` : ""}
     `;
     stack.appendChild(el);

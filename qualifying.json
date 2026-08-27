@@ -2,88 +2,76 @@
   "generatedDate": "2026-08-27",
   "tickers": [
     {
-      "ticker": "STUB",
-      "name": "StubHub",
-      "rsi": 30,
-      "pctSinceReport": -21.8,
-      "resetScore": 71
-    },
-    {
-      "ticker": "AIP",
-      "name": "Arteris",
-      "rsi": 32,
-      "pctSinceReport": -26.8,
-      "resetScore": 69
-    },
-    {
       "ticker": "LIF",
       "name": "Life360",
-      "rsi": 38,
       "pctSinceReport": -32.9,
-      "resetScore": 67
+      "resetScore": 77
     },
     {
       "ticker": "VPG",
       "name": "Vishay Precision Group",
-      "rsi": 37,
       "pctSinceReport": -24.5,
-      "resetScore": 67
+      "resetScore": 77
+    },
+    {
+      "ticker": "AIP",
+      "name": "Arteris",
+      "pctSinceReport": -26.8,
+      "resetScore": 75
+    },
+    {
+      "ticker": "STUB",
+      "name": "StubHub",
+      "pctSinceReport": -21.8,
+      "resetScore": 74
     },
     {
       "ticker": "HUT",
       "name": "Hut 8 Corp",
-      "rsi": 45,
       "pctSinceReport": -21.4,
-      "resetScore": 59
+      "resetScore": 67
     },
     {
       "ticker": "NYAX",
       "name": "Nayax",
-      "rsi": 45,
       "pctSinceReport": -30.5,
-      "resetScore": 58
+      "resetScore": 66
     },
     {
       "ticker": "BLLN",
       "name": "BillionToOne",
-      "rsi": 41,
       "pctSinceReport": -37.4,
-      "resetScore": 49
+      "resetScore": 61
     },
     {
       "ticker": "TTD",
       "name": "Trade Desk",
-      "rsi": 31,
       "pctSinceReport": -24.2,
-      "resetScore": 46
+      "resetScore": 51
     },
     {
       "ticker": "LMAT",
       "name": "LeMaitre Vascular",
-      "rsi": 34,
       "pctSinceReport": -24.4,
-      "resetScore": 44
+      "resetScore": 50
     },
     {
       "ticker": "ATS",
       "name": "ATS Corporation",
-      "rsi": 34,
       "pctSinceReport": -29.9,
-      "resetScore": 41
+      "resetScore": 48
     },
     {
       "ticker": "DKS",
       "name": "Dick's Sporting Goods",
-      "rsi": 20,
       "pctSinceReport": -30.7,
-      "resetScore": 37
+      "resetScore": 39
     },
     {
       "ticker": "TNC",
       "name": "Tennant Company",
-      "rsi": 40,
       "pctSinceReport": -22.6,
-      "resetScore": 32
+      "resetScore": 38
     }
   ]
 }

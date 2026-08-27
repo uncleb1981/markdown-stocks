@@ -30,18 +30,18 @@
       "resetScore": 67
     },
     {
-      "ticker": "NYAX",
-      "name": "Nayax",
-      "rsi": 45,
-      "pctSinceReport": -30.5,
-      "resetScore": 66
-    },
-    {
       "ticker": "HUT",
       "name": "Hut 8 Corp",
       "rsi": 45,
       "pctSinceReport": -21.4,
-      "resetScore": 65
+      "resetScore": 59
+    },
+    {
+      "ticker": "NYAX",
+      "name": "Nayax",
+      "rsi": 45,
+      "pctSinceReport": -30.5,
+      "resetScore": 58
     },
     {
       "ticker": "BLLN",
@@ -65,13 +65,6 @@
       "resetScore": 44
     },
     {
-      "ticker": "DKS",
-      "name": "Dick's Sporting Goods",
-      "rsi": 20,
-      "pctSinceReport": -30.7,
-      "resetScore": 41
-    },
-    {
       "ticker": "ATS",
       "name": "ATS Corporation",
       "rsi": 34,
@@ -79,11 +72,18 @@
       "resetScore": 41
     },
     {
+      "ticker": "DKS",
+      "name": "Dick's Sporting Goods",
+      "rsi": 20,
+      "pctSinceReport": -30.7,
+      "resetScore": 37
+    },
+    {
       "ticker": "TNC",
       "name": "Tennant Company",
       "rsi": 40,
       "pctSinceReport": -22.6,
-      "resetScore": 37
+      "resetScore": 32
     }
   ]
 }

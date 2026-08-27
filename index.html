@@ -325,6 +325,8 @@
   }
   .checkpoint-row .label { color: var(--muted-2); font-weight: 600; }
   .checkpoint-row .value { color: var(--muted); font-weight: 600; text-align: right; }
+  .checkpoint-row .value.up { color: var(--green); }
+  .checkpoint-row .value.down { color: var(--red); }
 
   .stamp {
     position: absolute;
@@ -768,6 +770,7 @@ function renderStack() {
   remaining.forEach((c, i) => {
     const isTop = i === total - 1;
     const isNewCard = c.firstListedDate && c.firstListedDate === generatedDate;
+    const sinceListedPct = (c.listedPrice != null && c.price != null) ? ((c.price - c.listedPrice) / c.listedPrice) * 100 : null;
     const el = document.createElement("div");
     el.className = "card";
     if (isTop && !ritualPlayed) {
@@ -798,8 +801,9 @@ function renderStack() {
         <span class="down">${c.pctSinceReport.toFixed(1)}% since report</span>${c.revenueYoyPct != null ? `<span class="sep">·</span><span class="rev-growth">Revenue ${c.revenueYoyPct > 0 ? '+' : ''}${c.revenueYoyPct}% YoY</span>` : ""}
       </div>
       <div class="why">${c.why}</div>
-      ${c.nextEarnings || c.rsi != null ? `
+      ${c.nextEarnings || c.rsi != null || sinceListedPct != null ? `
       <div class="checkpoint">
+        ${sinceListedPct != null ? `<div class="checkpoint-row"><span class="label">Since listed</span><span class="value ${sinceListedPct >= 0 ? 'up' : 'down'}">${sinceListedPct >= 0 ? '+' : ''}${sinceListedPct.toFixed(1)}%</span></div>` : ""}
         ${c.nextEarnings ? `<div class="checkpoint-row"><span class="label">Next earnings</span><span class="value">${c.nextEarnings}</span></div>` : ""}
         ${c.rsi != null ? `<div class="checkpoint-row"><span class="label">Resets when</span><span class="value">RSI clears 45 (now ${c.rsi})</span></div>` : ""}
       </div>` : ""}

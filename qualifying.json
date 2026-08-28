@@ -1,53 +1,47 @@
 {
-  "generatedDate": "2026-08-27",
+  "generatedDate": "2026-08-28",
   "tickers": [
-    {
-      "ticker": "LIF",
-      "name": "Life360",
-      "pctSinceReport": -32.9,
-      "resetScore": 77
-    },
     {
       "ticker": "VPG",
       "name": "Vishay Precision Group",
       "pctSinceReport": -24.5,
-      "resetScore": 77
-    },
-    {
-      "ticker": "AIP",
-      "name": "Arteris",
-      "pctSinceReport": -26.8,
-      "resetScore": 75
+      "resetScore": 78
     },
     {
       "ticker": "STUB",
       "name": "StubHub",
       "pctSinceReport": -21.8,
-      "resetScore": 74
+      "resetScore": 75
     },
     {
       "ticker": "HUT",
       "name": "Hut 8 Corp",
       "pctSinceReport": -21.4,
-      "resetScore": 67
+      "resetScore": 73
+    },
+    {
+      "ticker": "AIP",
+      "name": "Arteris",
+      "pctSinceReport": -26.8,
+      "resetScore": 73
     },
     {
       "ticker": "NYAX",
       "name": "Nayax",
       "pctSinceReport": -30.5,
-      "resetScore": 66
+      "resetScore": 72
+    },
+    {
+      "ticker": "LIF",
+      "name": "Life360",
+      "pctSinceReport": -32.9,
+      "resetScore": 69
     },
     {
       "ticker": "BLLN",
       "name": "BillionToOne",
       "pctSinceReport": -37.4,
-      "resetScore": 61
-    },
-    {
-      "ticker": "TTD",
-      "name": "Trade Desk",
-      "pctSinceReport": -24.2,
-      "resetScore": 51
+      "resetScore": 62
     },
     {
       "ticker": "LMAT",
@@ -59,19 +53,25 @@
       "ticker": "ATS",
       "name": "ATS Corporation",
       "pctSinceReport": -29.9,
-      "resetScore": 48
+      "resetScore": 50
     },
     {
-      "ticker": "DKS",
-      "name": "Dick's Sporting Goods",
-      "pctSinceReport": -30.7,
-      "resetScore": 39
+      "ticker": "TTD",
+      "name": "Trade Desk",
+      "pctSinceReport": -24.2,
+      "resetScore": 49
     },
     {
       "ticker": "TNC",
       "name": "Tennant Company",
       "pctSinceReport": -22.6,
-      "resetScore": 38
+      "resetScore": 39
+    },
+    {
+      "ticker": "DKS",
+      "name": "Dick's Sporting Goods",
+      "pctSinceReport": -30.7,
+      "resetScore": 35
     }
   ]
 }

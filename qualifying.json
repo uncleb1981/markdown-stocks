@@ -1,17 +1,17 @@
 {
-  "generatedDate": "2026-08-31",
+  "generatedDate": "2026-09-01",
   "tickers": [
-    {
-      "ticker": "HUT",
-      "name": "Hut 8 Corp",
-      "pctSinceReport": -21.4,
-      "resetScore": 81
-    },
     {
       "ticker": "VPG",
       "name": "Vishay Precision Group",
       "pctSinceReport": -24.5,
-      "resetScore": 79
+      "resetScore": 82
+    },
+    {
+      "ticker": "HUT",
+      "name": "Hut 8 Corp",
+      "pctSinceReport": -21.4,
+      "resetScore": 80
     },
     {
       "ticker": "AIP",
@@ -23,31 +23,31 @@
       "ticker": "LIF",
       "name": "Life360",
       "pctSinceReport": -32.9,
+      "resetScore": 77
+    },
+    {
+      "ticker": "STUB",
+      "name": "StubHub",
+      "pctSinceReport": -21.8,
+      "resetScore": 77
+    },
+    {
+      "ticker": "CORZ",
+      "name": "Core Scientific",
+      "pctSinceReport": -20.8,
       "resetScore": 75
     },
     {
       "ticker": "NYAX",
       "name": "Nayax",
       "pctSinceReport": -30.5,
-      "resetScore": 75
-    },
-    {
-      "ticker": "STUB",
-      "name": "StubHub",
-      "pctSinceReport": -21.8,
-      "resetScore": 75
-    },
-    {
-      "ticker": "CORZ",
-      "name": "Core Scientific",
-      "pctSinceReport": -20.8,
-      "resetScore": 73
+      "resetScore": 69
     },
     {
       "ticker": "BLLN",
       "name": "BillionToOne",
       "pctSinceReport": -37.4,
-      "resetScore": 63
+      "resetScore": 65
     },
     {
       "ticker": "ATS",
@@ -56,16 +56,16 @@
       "resetScore": 50
     },
     {
+      "ticker": "TTD",
+      "name": "Trade Desk",
+      "pctSinceReport": -24.2,
+      "resetScore": 49
+    },
+    {
       "ticker": "LMAT",
       "name": "LeMaitre Vascular",
       "pctSinceReport": -24.4,
       "resetScore": 49
-    },
-    {
-      "ticker": "TTD",
-      "name": "Trade Desk",
-      "pctSinceReport": -24.2,
-      "resetScore": 41
     },
     {
       "ticker": "TNC",
@@ -77,7 +77,7 @@
       "ticker": "DKS",
       "name": "Dick's Sporting Goods",
       "pctSinceReport": -30.7,
-      "resetScore": 29
+      "resetScore": 34
     }
   ]
 }

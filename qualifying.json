@@ -68,10 +68,28 @@
       "resetScore": 38
     },
     {
+      "ticker": "POWL",
+      "name": "Powell Industries",
+      "pctSinceReport": -21.7,
+      "resetScore": 35
+    },
+    {
       "ticker": "TTD",
       "name": "Trade Desk",
       "pctSinceReport": -24.2,
       "resetScore": 33
+    },
+    {
+      "ticker": "LZB",
+      "name": "La-Z-Boy",
+      "pctSinceReport": -21.8,
+      "resetScore": 31
+    },
+    {
+      "ticker": "TRN",
+      "name": "Trinity Industries",
+      "pctSinceReport": -23.7,
+      "resetScore": 31
     },
     {
       "ticker": "DKS",

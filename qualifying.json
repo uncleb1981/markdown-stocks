@@ -35,13 +35,13 @@
       "ticker": "CORZ",
       "name": "Core Scientific",
       "pctSinceReport": -20.8,
-      "resetScore": 70
+      "resetScore": 68
     },
     {
       "ticker": "NYAX",
       "name": "Nayax",
       "pctSinceReport": -30.5,
-      "resetScore": 67
+      "resetScore": 62
     },
     {
       "ticker": "BLLN",
@@ -59,13 +59,7 @@
       "ticker": "LMAT",
       "name": "LeMaitre Vascular",
       "pctSinceReport": -24.4,
-      "resetScore": 46
-    },
-    {
-      "ticker": "TNC",
-      "name": "Tennant Company",
-      "pctSinceReport": -22.6,
-      "resetScore": 38
+      "resetScore": 44
     },
     {
       "ticker": "POWL",
@@ -74,10 +68,10 @@
       "resetScore": 35
     },
     {
-      "ticker": "TTD",
-      "name": "Trade Desk",
-      "pctSinceReport": -24.2,
-      "resetScore": 33
+      "ticker": "TNC",
+      "name": "Tennant Company",
+      "pctSinceReport": -22.6,
+      "resetScore": 34
     },
     {
       "ticker": "LZB",
@@ -92,10 +86,16 @@
       "resetScore": 31
     },
     {
+      "ticker": "TTD",
+      "name": "Trade Desk",
+      "pctSinceReport": -24.2,
+      "resetScore": 25
+    },
+    {
       "ticker": "DKS",
       "name": "Dick's Sporting Goods",
       "pctSinceReport": -30.7,
-      "resetScore": 28
+      "resetScore": 25
     }
   ]
 }

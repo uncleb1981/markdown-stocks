@@ -1,35 +1,35 @@
 {
-  "generatedDate": "2026-09-08",
+  "generatedDate": "2026-09-09",
   "tickers": [
     {
-      "ticker": "AIP",
-      "name": "Arteris",
-      "pctSinceReport": -26.8,
-      "resetScore": 78
+      "ticker": "STUB",
+      "name": "StubHub",
+      "pctSinceReport": -21.8,
+      "resetScore": 80
     },
     {
       "ticker": "VPG",
       "name": "Vishay Precision Group",
       "pctSinceReport": -24.5,
-      "resetScore": 78
-    },
-    {
-      "ticker": "STUB",
-      "name": "StubHub",
-      "pctSinceReport": -21.8,
-      "resetScore": 76
+      "resetScore": 79
     },
     {
       "ticker": "LIF",
       "name": "Life360",
       "pctSinceReport": -32.9,
-      "resetScore": 75
+      "resetScore": 77
+    },
+    {
+      "ticker": "AIP",
+      "name": "Arteris",
+      "pctSinceReport": -26.8,
+      "resetScore": 77
     },
     {
       "ticker": "NYAX",
       "name": "Nayax",
       "pctSinceReport": -30.5,
-      "resetScore": 69
+      "resetScore": 74
     },
     {
       "ticker": "BLLN",
@@ -38,64 +38,64 @@
       "resetScore": 58
     },
     {
-      "ticker": "ATS",
-      "name": "ATS Corporation",
-      "pctSinceReport": -29.9,
-      "resetScore": 49
-    },
-    {
       "ticker": "LMAT",
       "name": "LeMaitre Vascular",
       "pctSinceReport": -24.4,
-      "resetScore": 48
+      "resetScore": 50
     },
     {
-      "ticker": "HUT",
-      "name": "Hut 8 Corp",
-      "pctSinceReport": -21.4,
-      "resetScore": 46
-    },
-    {
-      "ticker": "CORZ",
-      "name": "Core Scientific",
-      "pctSinceReport": -20.8,
-      "resetScore": 43
+      "ticker": "ATS",
+      "name": "ATS Corporation",
+      "pctSinceReport": -29.9,
+      "resetScore": 50
     },
     {
       "ticker": "TTD",
       "name": "Trade Desk",
       "pctSinceReport": -24.2,
+      "resetScore": 38
+    },
+    {
+      "ticker": "HUT",
+      "name": "Hut 8 Corp",
+      "pctSinceReport": -21.4,
+      "resetScore": 36
+    },
+    {
+      "ticker": "CORZ",
+      "name": "Core Scientific",
+      "pctSinceReport": -20.8,
+      "resetScore": 36
+    },
+    {
+      "ticker": "DKS",
+      "name": "Dick's Sporting Goods",
+      "pctSinceReport": -30.7,
+      "resetScore": 33
+    },
+    {
+      "ticker": "LZB",
+      "name": "La-Z-Boy",
+      "pctSinceReport": -21.8,
       "resetScore": 32
     },
     {
       "ticker": "TRN",
       "name": "Trinity Industries",
       "pctSinceReport": -23.7,
-      "resetScore": 28
+      "resetScore": 31
     },
     {
       "ticker": "TNC",
       "name": "Tennant Company",
       "pctSinceReport": -22.6,
-      "resetScore": 26
-    },
-    {
-      "ticker": "LZB",
-      "name": "La-Z-Boy",
-      "pctSinceReport": -21.8,
-      "resetScore": 24
-    },
-    {
-      "ticker": "DKS",
-      "name": "Dick's Sporting Goods",
-      "pctSinceReport": -30.7,
-      "resetScore": 22
+      "resetScore": 21
     },
     {
       "ticker": "POWL",
       "name": "Powell Industries",
       "pctSinceReport": -21.7,
-      "resetScore": 17
+      "resetScore": 19
     }
   ]
 }

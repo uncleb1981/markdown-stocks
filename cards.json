@@ -24,6 +24,7 @@
       "scoreChange": 7,
       "shockScore": 100,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-12",
       "listedPrice": 49.88
     },
@@ -41,6 +42,7 @@
       "scoreChange": 1,
       "shockScore": 100,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-24",
       "listedPrice": 6.68
     },
@@ -58,6 +60,7 @@
       "scoreChange": 0,
       "shockScore": 78.9,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-18",
       "listedPrice": 76.23
     },
@@ -75,6 +78,7 @@
       "scoreChange": 1,
       "shockScore": 57.1,
       "leadershipConfirmed": true,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-27",
       "listedPrice": 43.36
     },
@@ -92,6 +96,7 @@
       "scoreChange": 1,
       "shockScore": 66.7,
       "leadershipConfirmed": true,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-27",
       "listedPrice": 23.15
     },
@@ -109,6 +114,7 @@
       "scoreChange": 2,
       "shockScore": 37.5,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-12",
       "listedPrice": 97.45
     },
@@ -126,6 +132,7 @@
       "scoreChange": 0,
       "shockScore": 31.9,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-09-10",
       "listedPrice": 57.97
     },
@@ -143,6 +150,7 @@
       "scoreChange": 0,
       "shockScore": 8.6,
       "leadershipConfirmed": true,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-25",
       "listedPrice": 79.96
     },
@@ -160,6 +168,7 @@
       "scoreChange": 14,
       "shockScore": 100,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-14",
       "listedPrice": 83.80
     },
@@ -171,12 +180,13 @@
       "pctSinceReport": -29.9,
       "reportDate": "2026-08-06",
       "preEarningsClose": 27.95,
-      "why": "Runs automated manufacturing and assembly systems. New CEO Doug Wright took over in January 2026 after predecessor Andrew Hider's abrupt departure in the middle of 2025, and the first quarter fully under him missed estimates by 14%, a classic leadership reset, with shares down 30% since, while revenue is down modestly, not collapsing.",
+      "why": "Runs automated manufacturing and assembly systems. New CEO Doug Wright took over in January 2026 after predecessor Andrew Hider's abrupt departure in the middle of 2025, and the first quarter fully under him missed estimates by 14%, a classic leadership reset, with shares down 30% since, while revenue is down modestly, not collapsing. Wright has also bought shares on the open market since taking over.",
       "nextEarnings": null,
       "resetScore": 50,
       "scoreChange": 0,
       "shockScore": 13.8,
       "leadershipConfirmed": true,
+      "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-12",
       "listedPrice": 20.35
     },
@@ -188,12 +198,13 @@
       "pctSinceReport": -20.8,
       "reportDate": "2026-07-28",
       "preEarningsClose": 20.74,
-      "why": "Runs data centers for bitcoin mining and AI computing infrastructure. The second quarter swung to a much deeper loss than expected, one of the sharpest misses in this group, with shares down 21% since, while revenue has kept growing.",
+      "why": "Runs data centers for bitcoin mining and AI computing infrastructure. The second quarter swung to a much deeper loss than expected, one of the sharpest misses in this group, with shares down 21% since, while revenue has kept growing. Director Eric Weiss bought 7,000 shares on the open market in August 2026.",
       "nextEarnings": "Oct 23",
       "resetScore": 42,
       "scoreChange": 6,
       "shockScore": 100,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-31",
       "listedPrice": 16.43
     },
@@ -205,12 +216,13 @@
       "pctSinceReport": -24.2,
       "reportDate": "2026-08-06",
       "preEarningsClose": 17.67,
-      "why": "Runs a programmatic ad buying platform. Its finance seat has turned over three times in under a year: a CFO out after 6 months, an interim, now a third hire in July, and the latest quarter missed estimates by 8%, with shares down 24% since.",
+      "why": "Runs a programmatic ad buying platform. Its finance seat has turned over three times in under a year: a CFO out after 6 months, an interim, now a third hire in July, and the latest quarter missed estimates by 8%, with shares down 24% since. CEO Jeff Green has bought roughly $300 million of stock on the open market since March 2026, among the largest insider purchases in the industry.",
       "nextEarnings": "Nov 5",
       "resetScore": 41,
       "scoreChange": 3,
       "shockScore": 8.1,
       "leadershipConfirmed": true,
+      "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-12",
       "listedPrice": 13.46
     },
@@ -228,6 +240,7 @@
       "scoreChange": 1,
       "shockScore": 12.24,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-09-03",
       "listedPrice": 31.93
     },
@@ -239,12 +252,13 @@
       "pctSinceReport": -30.7,
       "reportDate": "2026-08-25",
       "preEarningsClose": 179.33,
-      "why": "Runs a chain of sporting goods stores that recently absorbed the Foot Locker acquisition. The latest quarter missed estimates by 9%, with shares down 31% since, as the newly acquired Foot Locker business underperformed and the company cut guidance for it. Revenue is up sharply year over year, but that reflects the acquisition, not organic growth.",
+      "why": "Runs a chain of sporting goods stores that recently absorbed the Foot Locker acquisition. The latest quarter missed estimates by 9%, with shares down 31% since, as the newly acquired Foot Locker business underperformed and the company cut guidance for it. Revenue is up sharply year over year, but that reflects the acquisition, not organic growth. Multiple directors bought a combined $3.7 million of stock on the open market in the days after the report.",
       "nextEarnings": "Nov 24",
       "resetScore": 31,
       "scoreChange": -2,
       "shockScore": 9.0,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-26",
       "listedPrice": 124.31
     },
@@ -256,12 +270,13 @@
       "pctSinceReport": -22.6,
       "reportDate": "2026-08-05",
       "preEarningsClose": 87.25,
-      "why": "Makes industrial cleaning equipment for maintaining floors and surfaces in commercial and industrial spaces. The latest quarter missed estimates by 37%, one of the sharper misses in this group, with shares down 23% since, while revenue has held roughly flat.",
+      "why": "Makes industrial cleaning equipment for maintaining floors and surfaces in commercial and industrial spaces. The latest quarter missed estimates by 37%, one of the sharper misses in this group, with shares down 23% since, while revenue has held roughly flat. Director Donal Mulligan bought 8,000 shares on the open market in August 2026.",
       "nextEarnings": "Nov 2",
       "resetScore": 30,
       "scoreChange": 9,
       "shockScore": 36.6,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-17",
       "listedPrice": 67.57
     },
@@ -279,6 +294,7 @@
       "scoreChange": 3,
       "shockScore": 3.4,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-09-03",
       "listedPrice": 172.00
     },
@@ -296,6 +312,7 @@
       "scoreChange": -11,
       "shockScore": 7.41,
       "leadershipConfirmed": false,
+      "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-09-03",
       "listedPrice": 28.00
     }

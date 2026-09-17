@@ -674,7 +674,7 @@
   </div>
   <div class="faq-item">
     <div class="q">How often does it update?</div>
-    <div class="a">Every weekday at 8:10am Central, plus whenever something worth flagging comes up in between.</div>
+    <div class="a">At least once a week, and often more, whenever something worth flagging comes up. There's no fixed daily schedule to hold it to.</div>
   </div>
 </section>
 
@@ -762,11 +762,11 @@ function renderStack() {
     stack.innerHTML = cards.length === 0
       ? `<div class="empty">
           <h2>No names cleared the checklist today.</h2>
-          <p>That happens, the bar is intentionally high. Fresh picks drop every trading day at <span class="next-update">8:10am Central</span>.</p>
+          <p>That happens, the bar is intentionally high. Fresh picks get added <span class="next-update">at least once a week</span>.</p>
         </div>`
       : `<div class="empty">
-          <h2>That's everyone for today.</h2>
-          <p>Fresh picks drop every trading day at <span class="next-update">8:10am Central</span>. Come back tomorrow to see who's next, and check on the names in your shortlist.</p>
+          <h2>That's everyone for now.</h2>
+          <p>Fresh picks get added <span class="next-update">at least once a week</span>. Check back soon to see who's next, and keep an eye on the names in your shortlist.</p>
         </div>`;
     document.getElementById("countLabel").textContent = countLabelText(cards.length, cards.length);
     return;
@@ -938,20 +938,14 @@ function toLocalISO(d) {
   return `${y}-${m}-${day}`;
 }
 
-// The daily refresh runs weekdays at 8:10am Central. This computes the most
-// recent date fresh cards should exist for, so we can flag stale data
-// instead of silently showing old picks as if they were current. Must use
-// Central time here, not the visitor's own browser timezone, or this check
-// is wrong for anyone outside Central (a Pacific-time visitor's browser
-// hours are ~2 behind Central, which would misjudge whether today's run
-// has happened yet).
-function mostRecentExpectedBusinessDate() {
-  const now = new Date();
-  let d = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
-  const beforeRunToday = (d.getHours() < 8) || (d.getHours() === 8 && d.getMinutes() < 15);
-  if (beforeRunToday) d.setDate(d.getDate() - 1);
-  while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() - 1);
-  return toLocalISO(d);
+// Cards refresh at least once a week, not on a fixed daily schedule, so
+// staleness only flags data that's meaningfully older than that instead of
+// checking for a specific expected run time. This avoids false "stale"
+// warnings from ordinary week-to-week gaps between refreshes.
+const STALE_AFTER_DAYS = 10;
+function isDataStale(dateStr) {
+  if (!dateStr) return false;
+  return daysSinceEpoch(toLocalISO(new Date())) - daysSinceEpoch(dateStr) > STALE_AFTER_DAYS;
 }
 
 const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -989,15 +983,11 @@ fetch("cards.json?_=" + Date.now())
     cards = data.cards || [];
     const dateStr = data.generatedDate || "";
     generatedDate = dateStr;
-    const expected = mostRecentExpectedBusinessDate();
-    // ISO YYYY-MM-DD strings compare lexicographically = chronologically.
-    // Data dated on/after the expected floor is fresh even if not an exact
-    // match (e.g. a manual refresh run ahead of the scheduled time).
-    const isStale = dateStr && dateStr < expected;
+    const isStale = isDataStale(dateStr);
     const subEl = document.getElementById("subLabel");
-    const timeStr = data.generatedTime || "8:10am Central";
+    const timeStr = data.generatedTime || "Central time";
     subEl.textContent = isStale
-      ? `${cards.length} picks · Updated ${dateStr} (today's refresh hasn't run yet)`
+      ? `${cards.length} picks · Last updated ${dateStr} (a fresh refresh is overdue)`
       : `${cards.length} picks · Updated ${dateStr} at ${timeStr}`;
     subEl.classList.toggle("stale", isStale);
     renderStack();

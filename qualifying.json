@@ -1,119 +1,23 @@
 {
-  "generatedDate": "2026-09-18",
+  "generatedDate": "2026-09-25",
   "tickers": [
-    {
-      "ticker": "NYAX",
-      "name": "Nayax",
-      "pctSinceReport": -36.7,
-      "resetScore": 78
-    },
-    {
-      "ticker": "LIF",
-      "name": "Life360",
-      "pctSinceReport": -37.0,
-      "resetScore": 74
-    },
-    {
-      "ticker": "AIP",
-      "name": "Arteris",
-      "pctSinceReport": -28.9,
-      "resetScore": 73
-    },
-    {
-      "ticker": "STUB",
-      "name": "StubHub",
-      "pctSinceReport": -24.6,
-      "resetScore": 71
-    },
-    {
-      "ticker": "VPG",
-      "name": "Vishay Precision Group",
-      "pctSinceReport": -37.6,
-      "resetScore": 64
-    },
-    {
-      "ticker": "CORZ",
-      "name": "Core Scientific",
-      "pctSinceReport": -16.1,
-      "resetScore": 60
-    },
-    {
-      "ticker": "HUT",
-      "name": "Hut 8 Corp",
-      "pctSinceReport": -17.6,
-      "resetScore": 55
-    },
-    {
-      "ticker": "VFC",
-      "name": "VF Corporation",
-      "pctSinceReport": -29.4,
-      "resetScore": 50
-    },
-    {
-      "ticker": "ATS",
-      "name": "ATS Corporation",
-      "pctSinceReport": -31.4,
-      "resetScore": 49
-    },
-    {
-      "ticker": "KNF",
-      "name": "Knife River",
-      "pctSinceReport": -30.6,
-      "resetScore": 47
-    },
-    {
-      "ticker": "ESAB",
-      "name": "ESAB Corporation",
-      "pctSinceReport": -27.5,
-      "resetScore": 47
-    },
-    {
-      "ticker": "BLLN",
-      "name": "BillionToOne",
-      "pctSinceReport": -26.0,
-      "resetScore": 46
-    },
-    {
-      "ticker": "LMAT",
-      "name": "LeMaitre Vascular",
-      "pctSinceReport": -24.9,
-      "resetScore": 46
-    },
-    {
-      "ticker": "TNC",
-      "name": "Tennant Company",
-      "pctSinceReport": -23.7,
-      "resetScore": 45
-    },
-    {
-      "ticker": "DKS",
-      "name": "Dick's Sporting Goods",
-      "pctSinceReport": -30.7,
-      "resetScore": 44
-    },
-    {
-      "ticker": "TTD",
-      "name": "Trade Desk",
-      "pctSinceReport": -19.0,
-      "resetScore": 33
-    },
-    {
-      "ticker": "LZB",
-      "name": "La-Z-Boy",
-      "pctSinceReport": -27.6,
-      "resetScore": 31
-    },
-    {
-      "ticker": "TRN",
-      "name": "Trinity Industries",
-      "pctSinceReport": -22.3,
-      "resetScore": 28
-    },
-    {
-      "ticker": "POWL",
-      "name": "Powell Industries",
-      "pctSinceReport": -19.4,
-      "resetScore": 25
-    }
+    { "ticker": "NYAX", "name": "Nayax", "pctSinceReport": -36.7, "resetScore": 79 },
+    { "ticker": "LIF", "name": "Life360", "pctSinceReport": -37.0, "resetScore": 74 },
+    { "ticker": "STUB", "name": "StubHub", "pctSinceReport": -24.6, "resetScore": 71 },
+    { "ticker": "AIP", "name": "Arteris", "pctSinceReport": -28.9, "resetScore": 67 },
+    { "ticker": "VPG", "name": "Vishay Precision Group", "pctSinceReport": -37.6, "resetScore": 64 },
+    { "ticker": "CORZ", "name": "Core Scientific", "pctSinceReport": -16.1, "resetScore": 59 },
+    { "ticker": "ATS", "name": "ATS Corporation", "pctSinceReport": -31.4, "resetScore": 49 },
+    { "ticker": "KNF", "name": "Knife River", "pctSinceReport": -30.6, "resetScore": 47 },
+    { "ticker": "HUT", "name": "Hut 8 Corp", "pctSinceReport": -17.6, "resetScore": 45 },
+    { "ticker": "TNC", "name": "Tennant Company", "pctSinceReport": -23.7, "resetScore": 45 },
+    { "ticker": "TTD", "name": "Trade Desk", "pctSinceReport": -19.0, "resetScore": 45 },
+    { "ticker": "LMAT", "name": "LeMaitre Vascular", "pctSinceReport": -24.9, "resetScore": 42 },
+    { "ticker": "ESAB", "name": "ESAB Corporation", "pctSinceReport": -27.5, "resetScore": 40 },
+    { "ticker": "VFC", "name": "VF Corporation", "pctSinceReport": -29.4, "resetScore": 39 },
+    { "ticker": "DKS", "name": "Dick's Sporting Goods", "pctSinceReport": -30.7, "resetScore": 32 },
+    { "ticker": "LZB", "name": "La-Z-Boy", "pctSinceReport": -27.6, "resetScore": 31 },
+    { "ticker": "TRN", "name": "Trinity Industries", "pctSinceReport": -22.3, "resetScore": 29 },
+    { "ticker": "POWL", "name": "Powell Industries", "pctSinceReport": -19.4, "resetScore": 10 }
   ]
 }

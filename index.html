@@ -79,14 +79,6 @@
     margin-top: 10px;
     text-wrap: pretty;
   }
-  header .sub {
-    color: var(--muted);
-    font-size: 14.5px;
-    margin-top: 10px;
-  }
-  header .sub.stale {
-    color: #e0a83e;
-  }
   header .disclaimer {
     color: var(--muted);
     font-size: 14.5px;
@@ -594,7 +586,7 @@
     <img src="logo.png" alt="Clearing the Decks" class="logo" width="64" height="64">
     <h1>Clearing the Decks</h1>
     <div class="tagline">We find stock resets<br>with healthy fundamentals.</div>
-    <div class="sub" id="subLabel">Loading…</div>
+    <div class="proof-strip" id="proofStrip"></div>
     <div class="disclaimer">Informational only. Not investment advice.</div>
   </header>
 
@@ -610,7 +602,6 @@
     <div class="pick-wrap">
       <div class="pick-eyebrow">Today's Pick</div>
       <div class="hero-card" id="heroCard"></div>
-      <div class="proof-strip" id="proofStrip"></div>
     </div>
 
     <button class="browse-toggle" id="browseToggle" hidden></button>
@@ -958,18 +949,15 @@ fetch("cards.json?_=" + Date.now())
     const dateStr = data.generatedDate || "";
     generatedDate = dateStr;
     const isStale = isDataStale(dateStr);
-    const subEl = document.getElementById("subLabel");
-    const timeStr = data.generatedTime || "Central time";
-    subEl.textContent = isStale
-      ? `${cards.length} picks · Last updated ${dateStr} (a fresh refresh is overdue)`
-      : `${cards.length} picks · Updated ${dateStr} at ${timeStr}`;
-    subEl.classList.toggle("stale", isStale);
     renderHero();
     renderBrowseList();
     showSummaryIfNeeded(data, dateStr, isStale);
   })
   .catch(() => {
-    document.getElementById("subLabel").textContent = "Couldn't load today's picks";
+    document.getElementById("heroCard").innerHTML = `<div class="empty">
+      <h2>Couldn't load today's pick.</h2>
+      <p>Try refreshing the page in a moment.</p>
+    </div>`;
   });
 
 // Separate from cards.json (today's top picks) — this is the FULL list of

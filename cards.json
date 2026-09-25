@@ -28,7 +28,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-12",
       "listedPrice": 49.88,
-      "dropScore": 76.2
+      "dropScore": 76.2,
+      "grossMargin": 46.9
     },
     {
       "ticker": "LIF",
@@ -47,7 +48,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-27",
       "listedPrice": 43.36,
-      "dropScore": 82.2
+      "dropScore": 82.2,
+      "grossMargin": 79.8
     },
     {
       "ticker": "STUB",
@@ -66,7 +68,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-24",
       "listedPrice": 6.68,
-      "dropScore": 54.5
+      "dropScore": 54.5,
+      "grossMargin": 82.0
     },
     {
       "ticker": "AIP",
@@ -85,7 +88,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-27",
       "listedPrice": 23.15,
-      "dropScore": 67.0
+      "dropScore": 67.0,
+      "grossMargin": 85.0
     },
     {
       "ticker": "VPG",
@@ -104,7 +108,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-18",
       "listedPrice": 76.23,
-      "dropScore": 61.2
+      "dropScore": 61.2,
+      "grossMargin": 38.7
     },
     {
       "ticker": "CORZ",
@@ -123,7 +128,8 @@
       "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-31",
       "listedPrice": 16.43,
-      "dropScore": 52.0
+      "dropScore": 52.0,
+      "grossMargin": 42.7
     },
     {
       "ticker": "ATS",
@@ -142,7 +148,8 @@
       "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-12",
       "listedPrice": 20.35,
-      "dropScore": 74.8
+      "dropScore": 74.8,
+      "grossMargin": 27.4
     },
     {
       "ticker": "KNF",
@@ -161,7 +168,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-09-10",
       "listedPrice": 57.97,
-      "dropScore": 66.2
+      "dropScore": 66.2,
+      "grossMargin": 17.3
     },
     {
       "ticker": "HUT",
@@ -180,7 +188,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-14",
       "listedPrice": 83.8,
-      "dropScore": 53.5
+      "dropScore": 53.5,
+      "grossMargin": 64.1
     },
     {
       "ticker": "TNC",
@@ -199,7 +208,8 @@
       "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-17",
       "listedPrice": 67.57,
-      "dropScore": 56.5
+      "dropScore": 56.5,
+      "grossMargin": 39.5
     },
     {
       "ticker": "TTD",
@@ -218,12 +228,13 @@
       "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-12",
       "listedPrice": 13.46,
-      "dropScore": 60.5
+      "dropScore": 60.5,
+      "grossMargin": 74.2
     },
     {
       "ticker": "LMAT",
       "name": "LeMaitre Vascular",
-      "price": 81.40,
+      "price": 81.4,
       "revenueYoyPct": 10,
       "pctSinceReport": -24.9,
       "reportDate": "2026-08-04",
@@ -237,7 +248,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-08-25",
       "listedPrice": 79.96,
-      "dropScore": 61.0
+      "dropScore": 61.0,
+      "grossMargin": 72.1
     },
     {
       "ticker": "ESAB",
@@ -256,7 +268,8 @@
       "leadershipConfirmed": true,
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-09-17",
-      "listedPrice": 67.13
+      "listedPrice": 67.13,
+      "grossMargin": 38.0
     },
     {
       "ticker": "VFC",
@@ -275,7 +288,8 @@
       "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-09-11",
       "listedPrice": 12.51,
-      "dropScore": 78.8
+      "dropScore": 78.8,
+      "grossMargin": 54.9
     },
     {
       "ticker": "DKS",
@@ -294,7 +308,8 @@
       "insiderBuyingConfirmed": true,
       "firstListedDate": "2026-08-26",
       "listedPrice": 124.31,
-      "dropScore": 76.8
+      "dropScore": 76.8,
+      "grossMargin": 34.8
     },
     {
       "ticker": "LZB",
@@ -313,7 +328,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-09-03",
       "listedPrice": 31.93,
-      "dropScore": 54.5
+      "dropScore": 54.5,
+      "grossMargin": 43.9
     },
     {
       "ticker": "TRN",
@@ -332,7 +348,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-09-03",
       "listedPrice": 28.0,
-      "dropScore": 59.2
+      "dropScore": 59.2,
+      "grossMargin": 22.7
     },
     {
       "ticker": "POWL",
@@ -351,7 +368,8 @@
       "insiderBuyingConfirmed": false,
       "firstListedDate": "2026-09-03",
       "listedPrice": 172.0,
-      "dropScore": 54.2
+      "dropScore": 54.2,
+      "grossMargin": 30.6
     }
   ]
 }

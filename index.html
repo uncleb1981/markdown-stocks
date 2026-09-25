@@ -219,6 +219,51 @@
   }
   .browse-item .save-btn { margin-top: 14px; font-size: 14px; padding: 10px; }
 
+  .margin-chart-wrap {
+    padding: 4px 0;
+    flex-shrink: 0;
+  }
+  .margin-chart-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 20px 20px 16px;
+    box-shadow: 0 16px 40px -8px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.04) inset;
+  }
+  .chart-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .chart-scroll::-webkit-scrollbar { display: none; }
+  .chart-scroll svg { display: block; }
+  .mc-legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 11.5px;
+    color: var(--muted-2);
+  }
+  .mc-legend .mc-gradient {
+    width: 90px;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #7a4a46, var(--red));
+    flex-shrink: 0;
+  }
+  .mc-note {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted-2);
+  }
+  #marginChart text.mc-tick { font-size: 10.5px; fill: var(--muted-2); }
+  #marginChart text.mc-axis-title { font-size: 11.5px; fill: var(--muted); }
+  #marginChart tspan.mc-label { font-size: 11px; fill: var(--text); font-weight: 700; }
+  #marginChart tspan.mc-label-sub { font-size: 9.5px; fill: var(--muted-2); }
+
   .proof-strip {
     margin-top: 14px;
     padding: 12px 14px;
@@ -599,6 +644,23 @@
   </aside>
 
   <div class="main-col">
+    <div class="margin-chart-wrap" id="marginChartWrap" hidden>
+      <div class="pick-eyebrow">Gross margin vs. revenue growth</div>
+      <div class="margin-chart-card">
+        <div class="chart-scroll">
+          <svg id="marginChart" width="760" height="460"></svg>
+        </div>
+        <div class="mc-legend">
+          <span>Since-earnings decline</span>
+          <div class="mc-gradient"></div>
+          <span>mild</span>
+          <span style="color:var(--muted-2);">&rarr;</span>
+          <span>severe</span>
+        </div>
+        <div class="mc-note">Gross margin (revenue minus cost of goods sold), not net margin, so one-time items and non-operating swings do not distort the picture. Swipe to see the full chart.</div>
+      </div>
+    </div>
+
     <div class="pick-wrap">
       <div class="pick-eyebrow">Today's Pick</div>
       <div class="hero-card" id="heroCard"></div>
@@ -817,6 +879,150 @@ function getTodaysPickCard() {
   return cards.find(c => c.ticker === todaysPick) || cards[0] || null;
 }
 
+function svgEl(tag, attrs) {
+  const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+// Muted rose (mild decline) -> the site's own --red (severe decline), so the
+// gradient reads as an extension of the red already used for "down" stats
+// elsewhere on the card, rather than introducing an unrelated hue.
+function declineColor(pctSinceReport, minAbs, maxAbs) {
+  const abs = Math.abs(pctSinceReport);
+  const t = maxAbs > minAbs ? Math.max(0, Math.min(1, (abs - minAbs) / (maxAbs - minAbs))) : 0.5;
+  const c1 = [122, 74, 70], c2 = [236, 95, 82];
+  const r = Math.round(c1[0] + (c2[0] - c1[0]) * t);
+  const g = Math.round(c1[1] + (c2[1] - c1[1]) * t);
+  const b = Math.round(c1[2] + (c2[2] - c1[2]) * t);
+  return `rgb(${r},${g},${b})`;
+}
+
+// Reads gross margin (not net margin) directly off each card, so a bitcoin
+// miner's non-operating fair-value swings or a one-time gain elsewhere never
+// distort the x-axis. Cards missing grossMargin (shouldn't happen going
+// forward, since STEP 5 excludes on missing financial data) are skipped
+// rather than guessed.
+function renderMarginChart() {
+  const wrap = document.getElementById("marginChartWrap");
+  const points = cards.filter(c => c.grossMargin != null && c.revenueYoyPct != null && c.pctSinceReport != null);
+  if (points.length < 2) { wrap.hidden = true; return; }
+  wrap.hidden = false;
+
+  const svg = document.getElementById("marginChart");
+  svg.innerHTML = "";
+
+  const plotLeft = 56, plotRight = 720, plotTop = 40, plotBottom = 360;
+  const margins = points.map(p => p.grossMargin);
+  const growths = points.map(p => p.revenueYoyPct);
+  const declines = points.map(p => Math.abs(p.pctSinceReport));
+
+  const xMin = Math.max(0, Math.floor(Math.min(...margins) / 10) * 10 - 10);
+  const xMax = Math.ceil(Math.max(...margins) / 10) * 10 + 10;
+  const yMin = Math.min(0, Math.floor(Math.min(...growths) / 10) * 10 - 10);
+  // Cap the y-axis to the SECOND-highest growth rate (+padding) rather than the
+  // max, so one runaway grower (a 100%+ quarter) doesn't compress every other
+  // point into a thin band at the bottom. Anything above the cap gets clamped
+  // to the top edge and flagged with a "^" marker (see below) instead of
+  // stretching the axis to fit it.
+  const sortedGrowthsDesc = growths.slice().sort((a, b) => b - a);
+  const capBasis = sortedGrowthsDesc.length > 3 ? sortedGrowthsDesc[1] : sortedGrowthsDesc[0];
+  const yMax = Math.max(Math.ceil((capBasis + 15) / 10) * 10, Math.ceil((yMin + 20) / 10) * 10);
+  const minAbsDecline = Math.min(...declines);
+  const maxAbsDecline = Math.max(...declines);
+
+  function xScale(m) {
+    const c = Math.max(xMin, Math.min(xMax, m));
+    return plotLeft + (c - xMin) / (xMax - xMin) * (plotRight - plotLeft);
+  }
+  function yScale(g) {
+    const c = Math.max(yMin, Math.min(yMax, g));
+    return plotBottom - (c - yMin) / (yMax - yMin) * (plotBottom - plotTop);
+  }
+
+  const xStep = (xMax - xMin) > 60 ? 20 : 10;
+  const xTicks = [];
+  for (let v = Math.ceil(xMin / xStep) * xStep; v <= xMax; v += xStep) xTicks.push(v);
+  const yStep = (yMax - yMin) > 80 ? 25 : 10;
+  const yTicks = [];
+  for (let v = Math.ceil(yMin / yStep) * yStep; v <= yMax; v += yStep) yTicks.push(v);
+
+  xTicks.forEach(v => {
+    const x = xScale(v);
+    svg.appendChild(svgEl("line", { x1: x, x2: x, y1: plotTop, y2: plotBottom, stroke: "#232326", "stroke-width": 1 }));
+    const lbl = svgEl("text", { x, y: plotBottom + 18, "text-anchor": "middle", class: "mc-tick" });
+    lbl.textContent = v + "%";
+    svg.appendChild(lbl);
+  });
+  yTicks.forEach(v => {
+    const y = yScale(v);
+    svg.appendChild(svgEl("line", { x1: plotLeft, x2: plotRight, y1: y, y2: y, stroke: "#232326", "stroke-width": 1 }));
+    const lbl = svgEl("text", { x: plotLeft - 10, y: y + 4, "text-anchor": "end", class: "mc-tick" });
+    lbl.textContent = (v === yMax && Math.max(...growths) > yMax ? v + "%+" : v + "%");
+    svg.appendChild(lbl);
+  });
+
+  if (yMin < 0 && yMax > 0) {
+    svg.appendChild(svgEl("line", { x1: plotLeft, x2: plotRight, y1: yScale(0), y2: yScale(0), stroke: "#3a3a42", "stroke-width": 1 }));
+  }
+
+  const xTitle = svgEl("text", { x: (plotLeft + plotRight) / 2, y: 425, "text-anchor": "middle", class: "mc-axis-title" });
+  xTitle.textContent = "Gross margin, most recent quarter";
+  svg.appendChild(xTitle);
+
+  const yTitle = svgEl("text", { x: -((plotTop + plotBottom) / 2), y: 16, "text-anchor": "middle", class: "mc-axis-title", transform: "rotate(-90)" });
+  yTitle.textContent = "Revenue growth YoY";
+  svg.appendChild(yTitle);
+
+  // Greedy label placement: try progressively further offsets from the dot
+  // (above first, then below) until one doesn't overlap an already-placed
+  // label. With 18 points clustered in a narrow value range this is what
+  // keeps ticker/decline pairs legible instead of stacking illegibly.
+  const placedBoxes = [];
+  function placeLabel(cx, cy) {
+    const offsets = [-20, -36, -52, -68, 18, 34, 50];
+    for (const off of offsets) {
+      const groupY = cy + off;
+      const box = { x1: cx - 24, x2: cx + 24, y1: groupY - 9, y2: groupY + 14 };
+      if (!placedBoxes.some(p => !(box.x2 < p.x1 || box.x1 > p.x2 || box.y2 < p.y1 || box.y1 > p.y2))) {
+        placedBoxes.push(box);
+        return groupY;
+      }
+    }
+    const groupY = cy - 20;
+    placedBoxes.push({ x1: cx - 24, x2: cx + 24, y1: groupY - 9, y2: groupY + 14 });
+    return groupY;
+  }
+
+  let anyClamped = false;
+  points.forEach(pt => {
+    const cx = xScale(pt.grossMargin);
+    const cy = yScale(pt.revenueYoyPct);
+    const color = declineColor(pt.pctSinceReport, minAbsDecline, maxAbsDecline);
+    const isClamped = pt.revenueYoyPct > yMax;
+    if (isClamped) anyClamped = true;
+
+    const dot = svgEl("circle", { cx, cy, r: 6, fill: color, stroke: "#1d1d21", "stroke-width": 2 });
+
+    const groupY = placeLabel(cx, cy);
+    const label = svgEl("text", { x: cx, y: groupY, "text-anchor": "middle" });
+    const tickerSpan = svgEl("tspan", { x: cx, class: "mc-label" });
+    tickerSpan.textContent = (isClamped ? "▲ " : "") + pt.ticker;
+    const declineSpan = svgEl("tspan", { x: cx, dy: 12, class: "mc-label-sub" });
+    declineSpan.textContent = pt.pctSinceReport.toFixed(1) + "%";
+    label.appendChild(tickerSpan);
+    label.appendChild(declineSpan);
+
+    svg.appendChild(dot);
+    svg.appendChild(label);
+  });
+
+  const note = document.querySelector("#marginChartWrap .mc-note");
+  note.textContent = "Gross margin (revenue minus cost of goods sold), not net margin, so one-time items and non-operating swings do not distort the picture."
+    + (anyClamped ? " ▲ marks a stock whose revenue growth runs above what the chart shows." : "")
+    + " Swipe to see the full chart.";
+}
+
 function renderHero() {
   const heroCard = document.getElementById("heroCard");
   const pick = getTodaysPickCard();
@@ -951,6 +1157,7 @@ fetch("cards.json?_=" + Date.now())
     const isStale = isDataStale(dateStr);
     renderHero();
     renderBrowseList();
+    renderMarginChart();
     showSummaryIfNeeded(data, dateStr, isStale);
   })
   .catch(() => {

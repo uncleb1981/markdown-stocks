@@ -175,63 +175,107 @@
     cursor: pointer;
   }
 
-  .swipe-legend {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 4px 0 0;
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    flex-shrink: 0;
-  }
-  .swipe-legend .legend-pass { color: var(--red); }
-  .swipe-legend .legend-keep { color: var(--green); }
-  .swipe-legend .legend-sep { color: var(--muted-2); font-weight: 500; }
-
-  .stack-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .pick-wrap {
     padding: 4px 0;
-    height: 600px;
     flex-shrink: 0;
   }
-  .stack {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    max-height: 600px;
+  .pick-eyebrow {
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 10px;
   }
-  .card {
-    position: absolute;
-    inset: 0;
+  .hero-card {
     background: var(--card);
     border: 1px solid var(--card-border);
     border-radius: 20px;
     padding: 26px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    touch-action: pan-y;
-    will-change: transform;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-    cursor: grab;
     box-shadow: 0 16px 40px -8px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.04) inset;
   }
-  .card::-webkit-scrollbar { display: none; }
-  .card.dragging { transition: none; cursor: grabbing; }
-
-  @keyframes ritualNudge {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    35% { transform: translate(-16px, 0) rotate(-3deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
+  .why-label {
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-2);
   }
-  .card.ritual-nudge { animation: ritualNudge 0.5s ease-out; }
+  .why-label.small { margin-top: 12px; }
+  .hero-card .why { margin-top: 6px; font-size: 17.5px; }
+  .browse-item .why { margin-top: 6px; }
+
+  .save-btn {
+    display: block;
+    margin-top: 18px;
+    width: 100%;
+    padding: 13px;
+    border-radius: 12px;
+    border: 1.5px solid var(--green);
+    background: rgba(56,198,126,0.1);
+    color: var(--green);
+    font-weight: 700;
+    font-size: 15.5px;
+    cursor: pointer;
+  }
+  .save-btn:active { transform: scale(0.98); }
+  .save-btn.saved {
+    background: var(--green);
+    color: #0a0a0b;
+    border-color: var(--green);
+  }
+  .browse-item .save-btn { margin-top: 14px; font-size: 14px; padding: 10px; }
+
+  .proof-strip {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(56,198,126,0.08);
+    border: 1px solid rgba(56,198,126,0.25);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .proof-strip .proof-label {
+    color: var(--green);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 11px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .proof-strip b { color: var(--text); }
+
+  .browse-toggle {
+    width: 100%;
+    margin-top: 18px;
+    padding: 13px;
+    border-radius: 12px;
+    border: 1.5px solid var(--card-border);
+    background: none;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 14.5px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .browse-toggle:active { transform: scale(0.98); }
+  .browse-toggle[hidden] { display: none; }
+  .browse-list {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .browse-list[hidden] { display: none; }
+  .browse-item {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 18px 20px;
+  }
 
   .ticker-line {
     display: flex;
@@ -333,54 +377,15 @@
   .checkpoint-row .value.down { color: var(--red); }
   .checkpoint-row .value .value-sub { color: var(--muted-2); font-weight: 600; }
 
-  .stamp {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    padding: 10px 22px;
-    border: 3px solid;
-    border-radius: 10px;
-    opacity: 0;
-    text-transform: uppercase;
-    background: rgba(0,0,0,0.55);
-    z-index: 5;
-  }
-  .stamp.keep { color: var(--green); border-color: var(--green); transform: translate(-50%, -50%) rotate(-8deg); }
-  .stamp.skip { color: var(--red); border-color: var(--red); transform: translate(-50%, -50%) rotate(8deg); }
-
-  .controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    padding: 4px 0 6px;
-    flex-shrink: 0;
-  }
-  .btn {
-    background: rgba(255,255,255,0.03);
-    border: 1.5px solid;
-    border-radius: 14px;
-    font-size: 17px;
-    font-weight: 700;
-    cursor: pointer;
-    padding: 13px 30px;
-    min-width: 130px;
-  }
-  .btn.skip { color: var(--red); border-color: var(--red); }
-  .btn.keep { color: var(--green); border-color: var(--green); }
-  .btn:active { transform: scale(0.96); }
-
   .footer-row {
     display: flex;
     justify-content: center;
-    padding: 0 0 4px;
+    padding: 6px 0 4px;
     flex-shrink: 0;
     font-size: 13.5px;
     color: var(--muted-2);
   }
+  .footer-row[hidden] { display: none; }
 
   .shortlist-panel {
     padding: 14px 0 10px;
@@ -474,19 +479,13 @@
   }
 
   .empty {
-    position: absolute;
-    inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--muted);
-    padding: 30px 26px;
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    box-shadow: 0 16px 40px -8px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.04) inset;
+    padding: 10px 6px;
   }
   .empty h2 { color: var(--text); font-size: 20px; margin: 0 0 8px; font-weight: 700; letter-spacing: -0.01em; }
   .empty p { font-size: 15px; line-height: 1.5; margin: 0; max-width: 320px; }
@@ -608,22 +607,17 @@
   </aside>
 
   <div class="main-col">
-    <div class="swipe-legend">
-      <span class="legend-pass">✕ Pass</span>
-      <span class="legend-sep">swipe or tap</span>
-      <span class="legend-keep">Keep ✓</span>
-    </div>
-    <div class="stack-wrap">
-      <div class="stack" id="stack"></div>
+    <div class="pick-wrap">
+      <div class="pick-eyebrow">Today's Pick</div>
+      <div class="hero-card" id="heroCard"></div>
+      <div class="proof-strip" id="proofStrip"></div>
     </div>
 
-    <div class="controls">
-      <button class="btn skip" id="skipBtn">✕ Pass</button>
-      <button class="btn keep" id="keepBtn">✓ Keep</button>
-    </div>
+    <button class="browse-toggle" id="browseToggle" hidden></button>
+    <div class="browse-list" id="browseList" hidden></div>
 
-    <div class="footer-row">
-      <span id="countLabel">…</span>
+    <div class="footer-row" id="footerRow" hidden>
+      <span id="streakLabel"></span>
     </div>
   </div>
 </div>
@@ -651,6 +645,10 @@
   <div class="faq-item">
     <div class="q">What is this?</div>
     <div class="a">Sometimes a company doesn't just have a bad quarter. It chooses one. A new CEO writes off everything undesirable in a single shot so next year looks better by comparison, often timed to make the turnaround story attractive enough to recruit new leadership into. Clearing the Decks looks for the fingerprints of that: a real, recent, unusually large earnings miss, a serious price reaction, and a business that's still fundamentally intact underneath. It's a personal research tool for spotting deliberate resets, not a stock picking service.</div>
+  </div>
+  <div class="faq-item">
+    <div class="q">Why only one pick a day?</div>
+    <div class="a">Every candidate that clears the screen is still ranked by Reset Score, so instead of asking you to work through the whole list, we surface the single highest ranked name that hasn't already been featured recently. Everything else is still here, one tap away under "See other resets we're tracking."</div>
   </div>
   <div class="faq-item">
     <div class="q">How long should I hold one of these?</div>
@@ -706,11 +704,19 @@ function prepSignupTags(form) {
 }
 
 let cards = [];
-let idx = 0;
+let todaysPick = null; // ticker string from cards.json's todaysPick field, falls back to cards[0]
 let qualifyingSet = null; // null = not loaded yet, don't show alerts until we have real data
-let ritualPlayed = false; // plays a brief nudge on the top card once per page load, not on every re-render
 let currentStreak = 0;
 let generatedDate = ""; // today's cards.json date, used to flag which cards are new vs carried forward
+let browseExpanded = false;
+
+// A couple of real, hand-verified examples of past picks that are up since being
+// listed here. Not automated yet (see project notes), update by hand occasionally.
+const PROOF_EXAMPLES = [
+  { name: "BillionToOne", pct: 27 },
+  { name: "Hut 8", pct: 16 }
+];
+const PROOF_AS_OF = "Sep 25, 2026";
 
 function loadShortlist() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
@@ -747,154 +753,121 @@ function updateStreak() {
   localStorage.setItem(STREAK_KEY, JSON.stringify(streak));
   return streak.count;
 }
-function countLabelText(shown, total) {
-  const streakSuffix = currentStreak >= 2 ? ` · 🔥 ${currentStreak} day streak` : "";
-  return `${shown} of ${total}${streakSuffix}`;
+function renderStreakFooter() {
+  const row = document.getElementById("footerRow");
+  if (currentStreak >= 2) {
+    document.getElementById("streakLabel").textContent = `🔥 ${currentStreak} day streak`;
+    row.hidden = false;
+  } else {
+    row.hidden = true;
+  }
 }
 
-function renderStack() {
-  const stack = document.getElementById("stack");
-  stack.innerHTML = "";
-  const remaining = cards.slice(idx, idx + 3).reverse();
-  const total = remaining.length;
+function addToShortlist(cardData) {
+  const list = loadShortlist();
+  if (!list.find(s => s.ticker === cardData.ticker)) {
+    list.push({ ticker: cardData.ticker, name: cardData.name, savedOn: new Date().toISOString().slice(0,10), priceThen: cardData.price });
+    storeShortlist(list);
+    renderShortlist();
+  }
+}
 
-  if (idx >= cards.length) {
-    stack.innerHTML = cards.length === 0
-      ? `<div class="empty">
-          <h2>No names cleared the checklist today.</h2>
-          <p>That happens, the bar is intentionally high. Fresh picks get added <span class="next-update">at least once a week</span>.</p>
-        </div>`
-      : `<div class="empty">
-          <h2>That's everyone for now.</h2>
-          <p>Fresh picks get added <span class="next-update">at least once a week</span>. Check back soon to see who's next, and keep an eye on the names in your shortlist.</p>
-        </div>`;
-    document.getElementById("countLabel").textContent = countLabelText(cards.length, cards.length);
+// Shared markup for both the hero card and a browse-list row. `compact`
+// only changes the "why" label wording, everything else renders the same
+// so a browsed pick looks like a smaller version of today's pick, not a
+// stripped-down summary.
+function cardMarkup(c, compact) {
+  const isNewCard = c.firstListedDate && c.firstListedDate === generatedDate;
+  const sinceListedPct = (c.listedPrice != null && c.price != null) ? ((c.price - c.listedPrice) / c.listedPrice) * 100 : null;
+  const saved = loadShortlist().some(s => s.ticker === c.ticker);
+  return `
+    <div class="ticker-line">
+      <div class="ticker-col">
+        <div class="ticker-row">
+          <span class="ticker">${c.ticker}</span>
+          ${isNewCard ? `<span class="new-badge">New</span>` : ""}
+        </div>
+        <span class="price">$${c.price}</span>
+      </div>
+      ${c.resetScore != null ? `
+      <div class="score-col">
+        <span class="reset-score">Score ${c.resetScore}</span>
+        ${isNewCard ? "" : (c.scoreChange ? `<span class="score-change ${c.scoreChange > 0 ? 'up' : 'down'}">${c.scoreChange > 0 ? '+' : ''}${c.scoreChange}</span>` : `<span class="score-change flat">No change</span>`)}
+      </div>` : ""}
+    </div>
+    <div class="name">${c.name}</div>
+    <div class="stat-line">
+      <span class="down">${c.pctSinceReport.toFixed(1)}% since report</span>${c.revenueYoyPct != null ? `<span class="sep">·</span><span class="rev-growth">Revenue ${c.revenueYoyPct > 0 ? '+' : ''}${c.revenueYoyPct}% YoY</span>` : ""}
+    </div>
+    <div class="why-label${compact ? " small" : ""}">${compact ? "Why" : "Why buy this today"}</div>
+    <div class="why">${c.why}</div>
+    ${c.nextEarnings || sinceListedPct != null ? `
+    <div class="checkpoint">
+      ${sinceListedPct != null ? `<div class="checkpoint-row"><span class="label">Since listed</span><span class="value ${sinceListedPct >= 0 ? 'up' : 'down'}">${sinceListedPct >= 0 ? '+' : ''}${sinceListedPct.toFixed(1)}%${c.firstListedDate ? ` <span class="value-sub">(${formatShortDate(c.firstListedDate)})</span>` : ""}</span></div>` : ""}
+      ${c.nextEarnings ? `<div class="checkpoint-row"><span class="label">Next catalyst</span><span class="value">${c.nextEarnings} earnings</span></div>` : ""}
+    </div>` : ""}
+    <button class="save-btn${saved ? " saved" : ""}" data-ticker="${c.ticker}">${saved ? "✓ Saved to Shortlist" : "+ Save to Shortlist"}</button>
+  `;
+}
+
+function attachSaveHandlers(container) {
+  container.querySelectorAll(".save-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const cardData = cards.find(c => c.ticker === btn.dataset.ticker);
+      if (!cardData) return;
+      addToShortlist(cardData);
+      btn.textContent = "✓ Saved to Shortlist";
+      btn.classList.add("saved");
+    });
+  });
+}
+
+function getTodaysPickCard() {
+  return cards.find(c => c.ticker === todaysPick) || cards[0] || null;
+}
+
+function renderHero() {
+  const heroCard = document.getElementById("heroCard");
+  const pick = getTodaysPickCard();
+  if (!pick) {
+    heroCard.innerHTML = `<div class="empty">
+      <h2>No names cleared the checklist today.</h2>
+      <p>That happens, the bar is intentionally high. Fresh picks get added <span class="next-update">at least once a week</span>.</p>
+    </div>`;
     return;
   }
-
-  remaining.forEach((c, i) => {
-    const isTop = i === total - 1;
-    const isNewCard = c.firstListedDate && c.firstListedDate === generatedDate;
-    const sinceListedPct = (c.listedPrice != null && c.price != null) ? ((c.price - c.listedPrice) / c.listedPrice) * 100 : null;
-    const el = document.createElement("div");
-    el.className = "card";
-    if (isTop && !ritualPlayed) {
-      el.classList.add("ritual-nudge");
-      ritualPlayed = true;
-    }
-    el.style.zIndex = i;
-    el.style.transform = `scale(${1 - (total - 1 - i) * 0.03}) translateY(${(total - 1 - i) * 10}px)`;
-    el.innerHTML = `
-      <div class="stamp keep">KEEP</div>
-      <div class="stamp skip">PASS</div>
-      <div class="ticker-line">
-        <div class="ticker-col">
-          <div class="ticker-row">
-            <span class="ticker">${c.ticker}</span>
-            ${isNewCard ? `<span class="new-badge">New</span>` : ""}
-          </div>
-          <span class="price">$${c.price}</span>
-        </div>
-        ${c.resetScore != null ? `
-        <div class="score-col">
-          <span class="reset-score">Score ${c.resetScore}</span>
-          ${isNewCard ? "" : (c.scoreChange ? `<span class="score-change ${c.scoreChange > 0 ? 'up' : 'down'}">${c.scoreChange > 0 ? '+' : ''}${c.scoreChange}</span>` : `<span class="score-change flat">No change</span>`)}
-        </div>` : ""}
-      </div>
-      <div class="name">${c.name}</div>
-      <div class="stat-line">
-        <span class="down">${c.pctSinceReport.toFixed(1)}% since report</span>${c.revenueYoyPct != null ? `<span class="sep">·</span><span class="rev-growth">Revenue ${c.revenueYoyPct > 0 ? '+' : ''}${c.revenueYoyPct}% YoY</span>` : ""}
-      </div>
-      <div class="why">${c.why}</div>
-      ${c.nextEarnings || sinceListedPct != null ? `
-      <div class="checkpoint">
-        ${sinceListedPct != null ? `<div class="checkpoint-row"><span class="label">Since listed</span><span class="value ${sinceListedPct >= 0 ? 'up' : 'down'}">${sinceListedPct >= 0 ? '+' : ''}${sinceListedPct.toFixed(1)}%${c.firstListedDate ? ` <span class="value-sub">(${formatShortDate(c.firstListedDate)})</span>` : ""}</span></div>` : ""}
-        ${c.nextEarnings ? `<div class="checkpoint-row"><span class="label">Next earnings</span><span class="value">${c.nextEarnings}</span></div>` : ""}
-      </div>` : ""}
-    `;
-    stack.appendChild(el);
-    if (isTop) attachDrag(el, c);
-  });
-
-  document.getElementById("countLabel").textContent = countLabelText(idx, cards.length);
+  heroCard.innerHTML = cardMarkup(pick, false);
+  attachSaveHandlers(heroCard);
 }
 
-function attachDrag(el, cardData) {
-  let startX = 0, startY = 0, dx = 0, dy = 0, dragging = false;
-  const keepStamp = el.querySelector(".stamp.keep");
-  const skipStamp = el.querySelector(".stamp.skip");
-
-  function onDown(x, y) {
-    dragging = true;
-    startX = x; startY = y;
-    el.classList.add("dragging");
-  }
-  function onMove(x, y) {
-    if (!dragging) return;
-    dx = x - startX; dy = y - startY;
-    // Horizontal-only: the card must never visually move vertically. This
-    // also lets a vertical touch pass through as normal page scroll (see
-    // touch-action: pan-y on .card) instead of fighting the drag gesture.
-    const rot = dx / 20;
-    el.style.transform = `translate(${dx}px, 0) rotate(${rot}deg)`;
-    const opacity = Math.min(Math.abs(dx) / 100, 1);
-    if (dx > 0) { keepStamp.style.opacity = opacity; skipStamp.style.opacity = 0; }
-    else { skipStamp.style.opacity = opacity; keepStamp.style.opacity = 0; }
-  }
-  function onUp() {
-    if (!dragging) return;
-    dragging = false;
-    el.classList.remove("dragging");
-    if (Math.abs(dx) > 90) {
-      commitSwipe(dx > 0, cardData);
-    } else {
-      el.style.transform = "";
-      keepStamp.style.opacity = 0;
-      skipStamp.style.opacity = 0;
-    }
-    dx = 0; dy = 0;
-  }
-
-  el.addEventListener("mousedown", e => onDown(e.clientX, e.clientY));
-  window.addEventListener("mousemove", e => onMove(e.clientX, e.clientY));
-  window.addEventListener("mouseup", onUp);
-
-  el.addEventListener("touchstart", e => {
-    const t = e.touches[0];
-    onDown(t.clientX, t.clientY);
-  }, { passive: true });
-  el.addEventListener("touchmove", e => {
-    const t = e.touches[0];
-    onMove(t.clientX, t.clientY);
-  }, { passive: true });
-  el.addEventListener("touchend", onUp);
+function updateBrowseToggleText(count) {
+  const btn = document.getElementById("browseToggle");
+  btn.textContent = `${browseExpanded ? "Hide" : "See"} other resets we're tracking (${count})`;
 }
 
-function commitSwipe(isKeep, cardData) {
-  const stack = document.getElementById("stack");
-  const top = stack.lastElementChild;
-  if (top) {
-    const flyX = isKeep ? 600 : -600;
-    top.style.transform = `translate(${flyX}px, -30px) rotate(${isKeep ? 24 : -24}deg)`;
-    top.style.opacity = "0";
-  }
-  if (isKeep) {
-    const list = loadShortlist();
-    if (!list.find(s => s.ticker === cardData.ticker)) {
-      list.push({ ticker: cardData.ticker, name: cardData.name, savedOn: new Date().toISOString().slice(0,10), priceThen: cardData.price });
-      storeShortlist(list);
-      renderShortlist();
-    }
-  }
-  idx++;
-  setTimeout(renderStack, 220);
+function renderBrowseList() {
+  const pick = getTodaysPickCard();
+  const others = pick ? cards.filter(c => c !== pick) : cards;
+  const btn = document.getElementById("browseToggle");
+  const list = document.getElementById("browseList");
+  btn.hidden = others.length === 0;
+  updateBrowseToggleText(others.length);
+  list.innerHTML = others.map(c => `<div class="browse-item">${cardMarkup(c, true)}</div>`).join("");
+  attachSaveHandlers(list);
 }
 
-document.getElementById("skipBtn").addEventListener("click", () => {
-  if (idx < cards.length) commitSwipe(false, cards[idx]);
-});
-document.getElementById("keepBtn").addEventListener("click", () => {
-  if (idx < cards.length) commitSwipe(true, cards[idx]);
+function renderProofStrip() {
+  const el = document.getElementById("proofStrip");
+  if (!PROOF_EXAMPLES.length) { el.style.display = "none"; return; }
+  const parts = PROOF_EXAMPLES.map(p => `${p.name} <b>+${p.pct}%</b>`).join(" · ");
+  el.innerHTML = `<span class="proof-label">Past picks are already moving</span>${parts} since being listed here. As of ${PROOF_AS_OF}. Not a guarantee for any current pick.`;
+}
+
+document.getElementById("browseToggle").addEventListener("click", () => {
+  browseExpanded = !browseExpanded;
+  document.getElementById("browseList").hidden = !browseExpanded;
+  const others = getTodaysPickCard() ? cards.filter(c => c !== getTodaysPickCard()) : cards;
+  updateBrowseToggleText(others.length);
 });
 
 function countResetComplete(list) {
@@ -981,6 +954,7 @@ fetch("cards.json?_=" + Date.now())
   .then(r => r.json())
   .then(data => {
     cards = data.cards || [];
+    todaysPick = data.todaysPick || (cards[0] && cards[0].ticker) || null;
     const dateStr = data.generatedDate || "";
     generatedDate = dateStr;
     const isStale = isDataStale(dateStr);
@@ -990,7 +964,8 @@ fetch("cards.json?_=" + Date.now())
       ? `${cards.length} picks · Last updated ${dateStr} (a fresh refresh is overdue)`
       : `${cards.length} picks · Updated ${dateStr} at ${timeStr}`;
     subEl.classList.toggle("stale", isStale);
-    renderStack();
+    renderHero();
+    renderBrowseList();
     showSummaryIfNeeded(data, dateStr, isStale);
   })
   .catch(() => {
@@ -1013,7 +988,9 @@ fetch("qualifying.json?_=" + Date.now())
   });
 
 renderShortlist();
+renderProofStrip();
 currentStreak = updateStreak();
+renderStreakFooter();
 </script>
 </body>
 </html>
